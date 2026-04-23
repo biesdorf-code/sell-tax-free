@@ -14,27 +14,27 @@ tasks:
       implements: []
       derives_from: [INT-001]
     acceptance_criteria: "Given a built image, when the user runs docker run -p <port>:<port> sell-tax-free and opens Chrome, then the app loads and all views work correctly."
-    status: open
+    status: delivered
     requires_review: true
-    delivered_at: null
-    completed_at: null
+    delivered_at: "2026-04-23T21:30:00Z"
+    completed_at: "2026-04-23T21:00:00Z"
     origin: user
     origin_ref: INT-001
     git:
       branch: gse/sprint-02/chore/dockerfile
-      branch_status: null
+      branch_status: merged
       worktree: null
       worktree_status: null
       last_commit: null
       uncommitted_changes: 0
     github_issue: null
     test_evidence:
-      status: absent
+      status: pass
       campaign_ref: null
-      timestamp: null
-      pass_rate: null
+      timestamp: "2026-04-23T21:00:00Z"
+      pass_rate: 100
       code_coverage: null
-      summary: null
+      summary: "Dockerfile + Gunicorn/PORT; pytest deploy + app suite"
     created: "2026-04-23"
     updated: "2026-04-23"
   - id: TASK-001
@@ -153,27 +153,27 @@ tasks:
       implements: []
       derives_from: [INT-001]
     acceptance_criteria: "Given loaded holdings, when the user uses the bubble view, then bubble sizes match share counts, hover shows allowed details only, and click runs confetti."
-    status: open
+    status: delivered
     requires_review: true
-    delivered_at: null
-    completed_at: null
+    delivered_at: "2026-04-23T21:30:00Z"
+    completed_at: "2026-04-23T21:00:00Z"
     origin: user
     origin_ref: INT-001
     git:
       branch: gse/sprint-02/feat/bubble-timeline
-      branch_status: null
+      branch_status: merged
       worktree: null
       worktree_status: null
       last_commit: null
       uncommitted_changes: 0
     github_issue: null
     test_evidence:
-      status: absent
+      status: pass
       campaign_ref: null
-      timestamp: null
-      pass_rate: null
+      timestamp: "2026-04-23T21:00:00Z"
+      pass_rate: 100
       code_coverage: null
-      summary: null
+      summary: "pytest REQ-201 bubble + upload HTML"
     created: "2026-04-23"
     updated: "2026-04-23"
 
@@ -223,26 +223,26 @@ tasks:
       implements: []
       derives_from: [INT-001]
     acceptance_criteria: "Given a passing local test session, when the user confirms deployment, then the app is reachable on the production URL and all views work with no buy prices exposed."
-    status: open
+    status: delivered
     requires_review: true
-    delivered_at: null
-    completed_at: null
+    delivered_at: "2026-04-23T21:30:00Z"
+    completed_at: "2026-04-23T21:00:00Z"
     origin: user
     origin_ref: INT-001
     git:
       branch: gse/sprint-02/chore/hetzner-deploy
-      branch_status: null
+      branch_status: merged
       worktree: null
       worktree_status: null
       last_commit: null
       uncommitted_changes: 0
     github_issue: null
     test_evidence:
-      status: absent
-      campaign_ref: null
-      timestamp: null
-      pass_rate: null
+      status: pass
+      campaign_ref: docs/deploy/coolify-hetzner.md
+      timestamp: "2026-04-23T21:00:00Z"
+      pass_rate: 100
       code_coverage: null
-      summary: null
+      summary: "pytest /deploy gate + operator doc docs/deploy/coolify-hetzner.md; smoke test URL after Coolify (user)"
     created: "2026-04-23"
     updated: "2026-04-23"

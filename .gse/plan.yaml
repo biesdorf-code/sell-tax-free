@@ -2,7 +2,7 @@ version: 1
 id: PLN-002
 sprint: 2
 mode: lightweight
-status: active
+status: completed
 goal: "Dockerize the app, add bubble timeline (FR-005), then optional Hetzner deploy path after user gate."
 
 tasks:
@@ -21,8 +21,8 @@ tasks:
 
 budget:
   total: 7
-  consumed: 5
-  remaining: 2
+  consumed: 7
+  remaining: 0
 
 workflow:
   expected:
@@ -37,9 +37,14 @@ workflow:
     - activity: reqs
       completed_at: "2026-04-23T20:00:00Z"
       notes: "docs/sprints/sprint-02/reqs.md — REQ-201 one bubble per lot; REQ-202 Docker."
-  active: produce
-  pending:
-    - deliver
+    - activity: produce
+      completed_at: "2026-04-23T21:00:00Z"
+      notes: "Bubbles, Dockerfile, /deploy gate, Gunicorn, docs/deploy/coolify-hetzner.md; pytest 12."
+    - activity: deliver
+      completed_at: "2026-04-23T21:30:00Z"
+      notes: "Merged to main; TASK-004/006/007 delivered; integration branch removed."
+  active: completed
+  pending: []
   skipped: []
 
 coherence:

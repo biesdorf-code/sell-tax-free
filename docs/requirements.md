@@ -72,9 +72,10 @@ This file is the **working specification** for the product. Update it whenever s
 
 ### NFR-005 — Production deployment gate
 
-- After local testing is validated by the user, a **deployment gate** is presented: "Deploy to production? (yes / not now)".
-- If yes, deployment follows **NFR-006** (v1 default: **Hetzner**). The **`/gse:deploy`** command is used when the project is ready for that step (after a working container and user sign-off).
-- If not now, the app continues to run locally; the gate can be re-triggered at any time.
+- After local testing is validated by the user, a **deployment gate** is presented: "Deploy to production? (yes / not now)" at route **`/deploy`** (linked from home and results).
+- If **yes**, the app shows **Coolify / Hetzner** deployment steps and points to **`docs/deploy/coolify-hetzner.md`** for operators. The app does not send credentials to any cloud automatically.
+- If **not now**, the user returns home; the gate remains available via **`/deploy`** anytime.
+- Separately, the **`/gse:deploy`** methodology step is used in the IDE when you are ready to operate Coolify with human confirmation.
 
 ### NFR-006 — Production target options
 
@@ -134,3 +135,4 @@ For a **single Python container with no database**, the options ranked by simpli
 | 2026-04-23 | Sprint 1 DELIVER: merged to `main`; [release notes](./sprints/sprint-01/release.md); TCP-001 9/9. |
 | 2026-04-23 | FR-005 resolved: one bubble per lot; same calendar day stacks vertically; REQ-201 in Sprint 2 reqs. |
 | 2026-04-23 | Sprint 2 PRODUCE: bubble timeline (`static/bubbles.js`), Dockerfile (NFR-001). |
+| 2026-04-23 | NFR-005: `/deploy` gate; Gunicorn + `PORT` in Docker; `docs/deploy/coolify-hetzner.md` (TASK-007). |

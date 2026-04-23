@@ -132,3 +132,48 @@ a { color: #2563eb; }
   font-size: 0.85rem;
   margin-top: 0.75rem;
 }
+
+.footer-links {
+  margin-top: 1.5rem;
+}
+
+.deploy-choice-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  align-items: center;
+}
+
+.btn-primary {
+  font: inherit;
+  cursor: pointer;
+  background: #18181b;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+}
+
+.btn-secondary {
+  font: inherit;
+  cursor: pointer;
+  background: #e4e4e7;
+  color: #18181b;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+}
+
+.deploy-dismiss {
+  margin-top: 0.75rem;
+}
+
+.deploy-list {
+  margin: 0.75rem 0 0;
+  padding-left: 1.25rem;
+}
+
+.deploy-list li {
+  margin-bottom: 0.5rem;
+}

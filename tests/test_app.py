@@ -55,6 +55,29 @@ def test_bubble_timeline_one_row_per_lot_same_day_two_tickers(client):
     assert text.count('"lot_date": "2024-05-24"') == 2
 
 
+def test_deploy_gate_and_not_now(client):
+    """NFR-005: /deploy gate; not now returns home."""
+    rv = client.get("/deploy")
+    assert rv.status_code == 200
+    text = rv.data.decode("utf-8")
+    assert "Deploy to production" in text
+    assert "Coolify" not in text or "show deployment steps" in text
+    rv2 = client.post("/deploy", data={"choice": "not_now"}, follow_redirects=False)
+    assert rv2.status_code == 302
+    assert rv2.headers.get("Location", "").endswith("/")
+
+
+def test_deploy_yes_shows_coolify_steps(client):
+    rv = client.post("/deploy", data={"choice": "yes"}, follow_redirects=False)
+    assert rv.status_code == 302
+    assert "/deploy" in rv.headers.get("Location", "")
+    rv2 = client.get("/deploy")
+    assert rv2.status_code == 200
+    body = rv2.data.decode("utf-8")
+    assert "Coolify" in body
+    assert "FLASK_SECRET_KEY" in body
+
+
 def test_upload_uses_session_not_filesystem(client, tmp_path, monkeypatch):
     """REQ-102: no persisted upload file; session holds lot payload only."""
     csv = (

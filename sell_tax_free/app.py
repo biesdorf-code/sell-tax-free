@@ -69,6 +69,24 @@ def results():
     )
 
 
+@app.route("/deploy", methods=["GET", "POST"])
+def deploy():
+    """NFR-005: human gate before following NFR-006 (Coolify / Hetzner)."""
+    if request.method == "POST":
+        choice = (request.form.get("choice") or "").strip()
+        if choice == "not_now":
+            session.pop("deploy_show_steps", None)
+            return redirect(url_for("index"))
+        if choice == "yes":
+            session["deploy_show_steps"] = True
+            return redirect(url_for("deploy"))
+        if choice == "hide_steps":
+            session.pop("deploy_show_steps", None)
+            return redirect(url_for("deploy"))
+    show_steps = bool(session.get("deploy_show_steps"))
+    return render_template("deploy.html", show_steps=show_steps)
+
+
 @app.route("/clear", methods=["POST"])
 def clear():
     session.pop("lots", None)

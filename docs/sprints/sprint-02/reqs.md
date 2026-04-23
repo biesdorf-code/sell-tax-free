@@ -16,6 +16,12 @@
 ## REQ-202 — TASK-006: container
 
 - Single image runs Flask on **0.0.0.0:8080**; `docker run -p 8080:8080 …` matches NFR-001.
+- **Production image** uses **Gunicorn** and honors **`PORT`** (default `8080`) for Coolify.
+
+## REQ-203 — TASK-007: deployment gate + operator doc
+
+- **NFR-005:** Route **`/deploy`** asks **Deploy to production?** with **Yes** (show Coolify/Hetzner steps) and **Not now** (return home).
+- **NFR-006:** Operator steps captured in **`docs/deploy/coolify-hetzner.md`** (no secrets in repo).
 
 ---
 
@@ -25,3 +31,4 @@
 |--------|------------|
 | REQ-201 | Approved (2026-04-23) |
 | REQ-202 | Approved (2026-04-23) |
+| REQ-203 | Approved (2026-04-23) |
