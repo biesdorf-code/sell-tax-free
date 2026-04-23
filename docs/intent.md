@@ -31,7 +31,7 @@ traces:
 >
 > - **Platform:** Local Python webapp, accessible via Chrome on the same machine.
 > - **Privacy:** Buy prices must never appear in the UI.
-> - **Documentation:** Maintain a living requirements file updated as specs evolve.
+
 
 ## Reformulated understanding
 
@@ -52,7 +52,7 @@ Single investor using the app **solo** on their **own machine** (no shared accou
 - **Not tax or legal advice** — the app applies a stated rule (>6 months) for planning / visualization only; you remain responsible for compliance and professional advice where needed.
 - **No buy price in the UI** — any price fields in CSV are input-only for logic if needed; they must not be rendered.
 - **Browser scope** — Chrome on the same machine is the target for v1; other browsers are not required.
-- **Deployment** — local app only; no requirement to host a public server or sync data to the cloud as part of v1.
+- **Deployment** — runs as a **single local Docker container**; no public server, no cloud hosting, no external services required for v1.
 
 ## Open Questions
 

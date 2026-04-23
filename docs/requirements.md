@@ -49,7 +49,10 @@ This file is the **working specification** for the product. Update it whenever s
 
 ### NFR-001 — Platform
 
-- **Local Python web app**, used in **Google Chrome** on the **same machine** as the server.
+- The app is packaged as a **single Docker container** (Python-based). No external services (database, cache, broker) are required; everything runs inside one image.
+- The container exposes an HTTP port and is started locally (e.g. `docker run -p 8080:8080 sell-tax-free`).
+- The user accesses the app in **Google Chrome** on the **same machine** running the container.
+- No `docker-compose` is required for v1 (single container, no orchestration needed).
 
 ### NFR-002 — Privacy
 
@@ -70,3 +73,4 @@ This file is the **working specification** for the product. Update it whenever s
 | 2026-04-23 | OQ-001 resolved: CSV columns locked from transactions.csv; used fields: Action, Time, Ticker, No. of shares. |
 | 2026-04-23 | OQ-003 resolved: reference date is always system date. |
 | 2026-04-23 | OQ-004 resolved: hover shows Ticker, quantity, lot buy date, days until tax-free — no price data. |
+| 2026-04-23 | NFR-001 updated: platform is now a single Docker container (Python); accessed via Chrome on the same machine. |
