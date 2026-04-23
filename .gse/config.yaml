@@ -9,5 +9,5 @@ git:
   strategy: branch-only
   worktree_dir: ".worktrees"
 lifecycle:
-  mode: ""
+  mode: lightweight
   stale_sprint_sessions: 3

@@ -7,8 +7,8 @@ current_phase: "LC00"
 last_activity: "hug"
 last_activity_timestamp: "2026-04-23"
 sessions_without_progress: 0
-session_paused: true
-pause_checkpoint: checkpoint-2026-04-23-1059.yaml
+session_paused: false
+pause_checkpoint: ""
 activity_history:
   - activity: hug
     completed_at: "2026-04-23T00:00:00Z"
