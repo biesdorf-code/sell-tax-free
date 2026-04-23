@@ -13,7 +13,12 @@ from flask import Flask, redirect, render_template, request, session, url_for
 
 from sell_tax_free.engine import ParseError, build_classified_lots, lots_to_session_dicts, session_dicts_to_lots
 
-app = Flask(__name__)
+_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+app = Flask(
+    __name__,
+    template_folder=os.path.join(_ROOT, "templates"),
+    static_folder=os.path.join(_ROOT, "static"),
+)
 app.secret_key = os.environ.get("FLASK_SECRET_KEY", "dev-only-change-in-production")
 
 
