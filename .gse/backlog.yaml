@@ -7,7 +7,7 @@ tasks:
     title: "Dockerfile — single-container Python app"
     description: "Write a Dockerfile that packages the Python web app into one image; expose HTTP port; verify it starts and serves in Chrome on localhost."
     artefact_type: config
-    sprint: null
+    sprint: 2
     priority: must
     complexity: 2
     traces:
@@ -21,7 +21,7 @@ tasks:
     origin: user
     origin_ref: INT-001
     git:
-      branch: null
+      branch: gse/sprint-02/chore/dockerfile
       branch_status: null
       worktree: null
       worktree_status: null
@@ -146,7 +146,7 @@ tasks:
     title: "Bubble timeline (size ∝ shares, hover details, click confetti)"
     description: "Single shared timeline; bubbles scaled by quantity; hover copy per REQs; click triggers confetti."
     artefact_type: code
-    sprint: null
+    sprint: 2
     priority: must
     complexity: 3
     traces:
@@ -160,7 +160,7 @@ tasks:
     origin: user
     origin_ref: INT-001
     git:
-      branch: null
+      branch: gse/sprint-02/feat/bubble-timeline
       branch_status: null
       worktree: null
       worktree_status: null
@@ -216,7 +216,7 @@ tasks:
     title: "Production deployment — Hetzner VPS via /gse:deploy"
     description: "After local testing gate is passed by user, deploy via /gse:deploy (Hetzner + Coolify per GSE-One). AWS deferred."
     artefact_type: config
-    sprint: null
+    sprint: 2
     priority: could
     complexity: 2
     traces:
@@ -230,7 +230,7 @@ tasks:
     origin: user
     origin_ref: INT-001
     git:
-      branch: null
+      branch: gse/sprint-02/chore/hetzner-deploy
       branch_status: null
       worktree: null
       worktree_status: null

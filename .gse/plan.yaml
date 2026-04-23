@@ -1,32 +1,28 @@
 version: 1
-id: PLN-001
-sprint: 1
+id: PLN-002
+sprint: 2
 mode: lightweight
-status: completed
-goal: "End-to-end slice: import broker CSV, classify lots for Luxembourg 6-month rule, show tax-free vs waiting list; keep requirements doc aligned."
+status: active
+goal: "Dockerize the app, add bubble timeline (FR-005), then optional Hetzner deploy path after user gate."
 
 tasks:
-  - id: TASK-001
+  - id: TASK-006
     order: 1
     complexity: 2
-    branch: gse/sprint-01/feat/csv-import
-  - id: TASK-002
+    branch: gse/sprint-02/chore/dockerfile
+  - id: TASK-004
     order: 2
     complexity: 3
-    branch: gse/sprint-01/feat/eligibility-engine
-  - id: TASK-003
+    branch: gse/sprint-02/feat/bubble-timeline
+  - id: TASK-007
     order: 3
-    complexity: 3
-    branch: gse/sprint-01/feat/tax-waiting-ui
-  - id: TASK-005
-    order: 4
-    complexity: 1
-    branch: gse/sprint-01/docs/requirements-sync
+    complexity: 2
+    branch: gse/sprint-02/chore/hetzner-deploy
 
 budget:
-  total: 9
-  consumed: 9
-  remaining: 0
+  total: 7
+  consumed: 0
+  remaining: 7
 
 workflow:
   expected:
@@ -36,30 +32,23 @@ workflow:
     - deliver
   completed:
     - activity: plan
-      completed_at: "2026-04-23T14:00:00Z"
-      notes: "Sprint 1 scope approved (autonomous); TASK-004/006/007 remain in pool."
-    - activity: reqs
-      completed_at: "2026-04-23T15:00:00Z"
-      notes: "docs/sprints/sprint-01/reqs.md approved (REQ-001..005, REQ-101..103)."
-    - activity: produce
-      completed_at: "2026-04-23T16:00:00Z"
-      notes: "Flask app, engine, templates, pytest."
-    - activity: deliver
-      completed_at: "2026-04-23T17:00:00Z"
-      notes: "Merged to main; TCP-001 9/9 pass; plan-summary + release."
-  active: null
-  pending: []
+      completed_at: "2026-04-23T18:00:00Z"
+      notes: "PLN-002: TASK-006 → TASK-004 → TASK-007 (7 pts)."
+  active: reqs
+  pending:
+    - produce
+    - deliver
   skipped: []
 
 coherence:
-  last_evaluated: "2026-04-23T17:00:00Z"
+  last_evaluated: "2026-04-23T18:00:00Z"
   scope_changes: []
   alerts: []
 
 risks:
-  - description: "Bubble view representation for multiple lots per ticker (FR-005) deferred to sprint 2 — confirm in REQS."
-    likelihood: low
-    mitigation: "REQs will reference FR-005 TBD; sprint 2 pulls TASK-004."
+  - description: "FR-005 bubble layout for multiple lots per ticker must be fixed in REQs before coding."
+    likelihood: medium
+    mitigation: "Default: one bubble per lot on shared axis; document in sprint-02 reqs."
 
 created: "2026-04-23"
 updated: "2026-04-23"
