@@ -30,3 +30,7 @@ activity_history:
         status: open
       - id: TASK-005
         status: open
+      - id: TASK-006
+        status: open
+      - id: TASK-007
+        status: open
