@@ -2,6 +2,18 @@
 
 Operational companion to the in-app **Deploy to production?** gate (`/deploy`).
 
+## Learner mode (shared Coolify, no `gse-one` CLI)
+
+If you only have `.env` with `COOLIFY_URL`, `COOLIFY_API_TOKEN`, `DEPLOY_DOMAIN`, and `DEPLOY_USER` (from your instructor), run from the repo root:
+
+```bash
+python scripts/learner_coolify_deploy.py
+```
+
+This uses the Coolify API to ensure project `gse-<DEPLOY_USER>`, environment `production`, and app `sell-tax-free-<DEPLOY_USER>`, then starts a Dockerfile build from `main`. Add **`FLASK_SECRET_KEY`** in the Coolify UI for that app before relying on sessions in production.
+
+Optional `.env` overrides: `DEPLOY_GIT_REPO`, `DEPLOY_GIT_BRANCH`, `COOLIFY_SERVER_UUID` (if multiple servers).
+
 ## Preconditions
 
 - Image builds from repo root `Dockerfile` (Python 3.12, Gunicorn, `PORT` default `8080`).
