@@ -74,3 +74,61 @@ th { font-weight: 600; color: #3f3f46; }
 }
 
 a { color: #2563eb; }
+
+/* FR-005 — bubble timeline (one bubble per lot) */
+.bubble-timeline-root {
+  margin-top: 0.75rem;
+  min-height: 12rem;
+}
+
+.bubble-lane {
+  position: relative;
+  min-height: 11rem;
+  margin: 0.5rem 0 0.25rem;
+}
+
+.bubble-axis {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #d4d4d8, #71717a, #d4d4d8);
+  border-radius: 1px;
+}
+
+.bubble-wrap {
+  position: absolute;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.bubble {
+  display: block;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  padding: 0;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.bubble:hover,
+.bubble:focus-visible {
+  transform: scale(1.06);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+  outline: none;
+}
+
+.bubble--free {
+  background: radial-gradient(circle at 30% 30%, #86efac, #22c55e);
+}
+
+.bubble--wait {
+  background: radial-gradient(circle at 30% 30%, #fde68a, #eab308);
+}
+
+.bubble-legend {
+  font-size: 0.85rem;
+  margin-top: 0.75rem;
+}

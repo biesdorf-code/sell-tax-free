@@ -6,6 +6,8 @@ This file is the **working specification** for the product. Update it whenever s
 
 **Sprint 1 REQs (approved):** [reqs.md](./sprints/sprint-01/reqs.md)
 
+**Sprint 2 REQs (approved):** [reqs.md](./sprints/sprint-02/reqs.md)
+
 ---
 
 ## Functional requirements
@@ -40,8 +42,8 @@ This file is the **working specification** for the product. Update it whenever s
 
 ### FR-005 — View: Shared bubble timeline
 
-- **One** timeline showing holdings as **bubbles** (how **multiple lots for one ticker** are represented — e.g. one bubble per lot vs aggregated — **TBD in REQS**).
-- **Bubble area** (or diameter) is **proportional to share count** for the unit each bubble represents.
+- **One** shared horizontal timeline; **one bubble per lot** (each lot = one `(ticker, calendar day)` after FR-002). Multiple lots for the same ticker on different days appear as **separate** bubbles. Lots that share the same buy **date** (different tickers) share the same horizontal position and are **stacked vertically**.
+- **Bubble area** (via radius) scales with **share count** for that lot **relative to the largest quantity** on the chart (√ scaling).
 - **Hover:** show **Ticker**, **quantity (No. of shares)**, **lot buy date**, **days until tax-free** (or "Tax-free" if already eligible). No buy price or cost basis.
 - **Click:** trigger a **confetti** animation.
 
@@ -130,3 +132,5 @@ For a **single Python container with no database**, the options ranked by simpli
 | 2026-04-23 | Sprint 1 `docs/sprints/sprint-01/reqs.md` approved; six-month rule = calendar `relativedelta` (see REQ-003). |
 | 2026-04-23 | Sprint 1 PRODUCE: Flask app + engine + tests; see **Sprint 1 implementation (dev)** above. |
 | 2026-04-23 | Sprint 1 DELIVER: merged to `main`; [release notes](./sprints/sprint-01/release.md); TCP-001 9/9. |
+| 2026-04-23 | FR-005 resolved: one bubble per lot; same calendar day stacks vertically; REQ-201 in Sprint 2 reqs. |
+| 2026-04-23 | Sprint 2 PRODUCE: bubble timeline (`static/bubbles.js`), Dockerfile (NFR-001). |

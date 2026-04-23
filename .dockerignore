@@ -1,0 +1,11 @@
+.git
+.gse
+.cursor
+__pycache__
+*.pyc
+.pytest_cache
+tests
+docs
+*.md
+transactions.csv
+.vscode

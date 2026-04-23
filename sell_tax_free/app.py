@@ -57,12 +57,15 @@ def results():
     reference = date.fromisoformat(ref_s)
     tax_free = [l for l in lots if l.tax_free]
     waiting = [l for l in lots if not l.tax_free]
+    lots_sorted = sorted(lots, key=lambda l: (l.lot_date, l.ticker))
+    lots_bubble = lots_to_session_dicts(lots_sorted)
 
     return render_template(
         "results.html",
         reference=reference,
         tax_free=tax_free,
         waiting=waiting,
+        lots_bubble=lots_bubble,
     )
 
 

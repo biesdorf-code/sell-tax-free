@@ -18,6 +18,15 @@
       </form>
     </nav>
 
+    <section class="card bubble-card">
+      <h2>Bubble timeline</h2>
+      <p class="muted">One bubble per lot (same ticker on different days = separate bubbles). Bubble size reflects quantity. Hover for details — no prices. Click a bubble for confetti.</p>
+      <div id="bubble-timeline" class="bubble-timeline-root" role="region" aria-label="Lot timeline bubbles"></div>
+      <script type="application/json" id="bubble-lots-data">{{ lots_bubble | tojson }}</script>
+      <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js" defer></script>
+      <script src="{{ url_for('static', filename='bubbles.js') }}" defer></script>
+    </section>
+
     <section class="card">
       <h2>Tax-free to sell</h2>
       {% if tax_free %}

@@ -31,6 +31,28 @@ def test_upload_shows_sections_without_price_in_html(client):
     assert "Tax-free" in text or "Waiting" in text
     assert "999.99" not in text
     assert "TSM" in text
+    assert 'id="bubble-timeline"' in text
+    assert "bubbles.js" in text
+
+
+def test_bubble_timeline_one_row_per_lot_same_day_two_tickers(client):
+    """REQ-201: two lots on same calendar day → two entries in bubble JSON."""
+    csv = (
+        "Action,Time,ISIN,Ticker,Name,Notes,ID,No. of shares,Price / share\n"
+        "Market buy,2024-05-24 10:00:00,US1,AAA,X,,y,5,1.0\n"
+        "Market buy,2024-05-24 15:00:00,US2,BBB,X,,y,3,1.0\n"
+    )
+    rv = client.post(
+        "/",
+        data={"csv": (BytesIO(csv.encode()), "t.csv")},
+        content_type="multipart/form-data",
+        follow_redirects=True,
+    )
+    assert rv.status_code == 200
+    text = rv.data.decode("utf-8")
+    assert text.count('"ticker": "AAA"') == 1
+    assert text.count('"ticker": "BBB"') == 1
+    assert text.count('"lot_date": "2024-05-24"') == 2
 
 
 def test_upload_uses_session_not_filesystem(client, tmp_path, monkeypatch):
