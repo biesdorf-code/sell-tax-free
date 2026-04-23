@@ -1,4 +1,178 @@
 version: 1
 created: "2026-04-23"
 updated: "2026-04-23"
-tasks: []
+tasks:
+  - id: TASK-001
+    title: "Pin CSV sample and import pipeline (no buy prices in UI)"
+    description: "Lock column mapping from the sample file, parse uploads, and ensure price fields are never rendered."
+    artefact_type: requirement
+    sprint: null
+    priority: must
+    complexity: 2
+    traces:
+      implements: []
+      derives_from: [INT-001]
+    acceptance_criteria: "Given a valid CSV matching the agreed sample, when the user uploads it, then holdings are loaded and no buy price or cost field appears in the UI."
+    status: open
+    requires_review: true
+    delivered_at: null
+    completed_at: null
+    origin: user
+    origin_ref: INT-001
+    git:
+      branch: null
+      branch_status: null
+      worktree: null
+      worktree_status: null
+      last_commit: null
+      uncommitted_changes: 0
+    github_issue: null
+    test_evidence:
+      status: absent
+      campaign_ref: null
+      timestamp: null
+      pass_rate: null
+      code_coverage: null
+      summary: null
+    created: "2026-04-23"
+    updated: "2026-04-23"
+
+  - id: TASK-002
+    title: "Aggregation and Luxembourg 6-month eligibility engine"
+    description: "Group same ticker + same day; compute tax-free vs waiting from holding period rules (resolve OQ-002/OQ-003 in REQs)."
+    artefact_type: code
+    sprint: null
+    priority: must
+    complexity: 3
+    traces:
+      implements: []
+      derives_from: [INT-001]
+    acceptance_criteria: "Given aggregated lots, when the reference date is applied, then each ticker is classified as tax-free or waiting with a correct eligibility date."
+    status: open
+    requires_review: true
+    delivered_at: null
+    completed_at: null
+    origin: user
+    origin_ref: INT-001
+    git:
+      branch: null
+      branch_status: null
+      worktree: null
+      worktree_status: null
+      last_commit: null
+      uncommitted_changes: 0
+    github_issue: null
+    test_evidence:
+      status: absent
+      campaign_ref: null
+      timestamp: null
+      pass_rate: null
+      code_coverage: null
+      summary: null
+    created: "2026-04-23"
+    updated: "2026-04-23"
+
+  - id: TASK-003
+    title: "Tax-free / waiting list UI with timelines"
+    description: "Two sections with clear separation and per-holding time-until-tax-free visualization."
+    artefact_type: code
+    sprint: null
+    priority: must
+    complexity: 3
+    traces:
+      implements: []
+      derives_from: [INT-001]
+    acceptance_criteria: "Given classified holdings, when the user opens this view, then tax-free and waiting groups are shown with timelines and no buy prices."
+    status: open
+    requires_review: true
+    delivered_at: null
+    completed_at: null
+    origin: user
+    origin_ref: INT-001
+    git:
+      branch: null
+      branch_status: null
+      worktree: null
+      worktree_status: null
+      last_commit: null
+      uncommitted_changes: 0
+    github_issue: null
+    test_evidence:
+      status: absent
+      campaign_ref: null
+      timestamp: null
+      pass_rate: null
+      code_coverage: null
+      summary: null
+    created: "2026-04-23"
+    updated: "2026-04-23"
+
+  - id: TASK-004
+    title: "Bubble timeline (size ∝ shares, hover details, click confetti)"
+    description: "Single shared timeline; bubbles scaled by quantity; hover copy per REQs; click triggers confetti."
+    artefact_type: code
+    sprint: null
+    priority: must
+    complexity: 3
+    traces:
+      implements: []
+      derives_from: [INT-001]
+    acceptance_criteria: "Given loaded holdings, when the user uses the bubble view, then bubble sizes match share counts, hover shows allowed details only, and click runs confetti."
+    status: open
+    requires_review: true
+    delivered_at: null
+    completed_at: null
+    origin: user
+    origin_ref: INT-001
+    git:
+      branch: null
+      branch_status: null
+      worktree: null
+      worktree_status: null
+      last_commit: null
+      uncommitted_changes: 0
+    github_issue: null
+    test_evidence:
+      status: absent
+      campaign_ref: null
+      timestamp: null
+      pass_rate: null
+      code_coverage: null
+      summary: null
+    created: "2026-04-23"
+    updated: "2026-04-23"
+
+  - id: TASK-005
+    title: "Keep living requirements aligned with delivery"
+    description: "Update docs/requirements.md when behavior or scope changes; link sprint reqs as they appear."
+    artefact_type: doc
+    sprint: null
+    priority: should
+    complexity: 1
+    traces:
+      implements: []
+      derives_from: [INT-001]
+    acceptance_criteria: "Given a merged behavior change, when the sprint closes, then docs/requirements.md reflects it or defers with an open question."
+    status: open
+    requires_review: false
+    delivered_at: null
+    completed_at: null
+    origin: user
+    origin_ref: INT-001
+    git:
+      branch: null
+      branch_status: null
+      worktree: null
+      worktree_status: null
+      last_commit: null
+      uncommitted_changes: 0
+    github_issue: null
+    test_evidence:
+      status: absent
+      campaign_ref: null
+      timestamp: null
+      pass_rate: null
+      code_coverage: null
+      summary: null
+    created: "2026-04-23"
+    updated: "2026-04-23"

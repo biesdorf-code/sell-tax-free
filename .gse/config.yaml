@@ -1,6 +1,9 @@
 version: 1
 created: "2026-04-23"
 updated: "2026-04-23"
+project:
+  name: Sell Tax Free
+  domain: luxembourg-capital-gains
 dependency_audit: true
 coach:
   enabled: true
