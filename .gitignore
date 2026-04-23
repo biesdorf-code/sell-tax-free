@@ -1,0 +1,22 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Node / JS
+node_modules/
+dist/
+build/
+.parcel-cache/
+.next/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# GSE-One (machine-specific)
+.gse/local/
+
