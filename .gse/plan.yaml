@@ -1,9 +1,58 @@
 version: 1
+id: PLN-001
+sprint: 1
+mode: lightweight
+status: active
+goal: "End-to-end slice: import broker CSV, classify lots for Luxembourg 6-month rule, show tax-free vs waiting list; keep requirements doc aligned."
+
+tasks:
+  - id: TASK-001
+    order: 1
+    complexity: 2
+    branch: gse/sprint-01/feat/csv-import
+  - id: TASK-002
+    order: 2
+    complexity: 3
+    branch: gse/sprint-01/feat/eligibility-engine
+  - id: TASK-003
+    order: 3
+    complexity: 3
+    branch: gse/sprint-01/feat/tax-waiting-ui
+  - id: TASK-005
+    order: 4
+    complexity: 1
+    branch: gse/sprint-01/docs/requirements-sync
+
+budget:
+  total: 9
+  consumed: 0
+  remaining: 9
+
+workflow:
+  expected:
+    - plan
+    - reqs
+    - produce
+    - deliver
+  completed:
+    - activity: plan
+      completed_at: "2026-04-23T14:00:00Z"
+      notes: "Sprint 1 scope approved (autonomous); TASK-004/006/007 remain in pool."
+  active: reqs
+  pending:
+    - produce
+    - deliver
+  skipped: []
+
+coherence:
+  last_evaluated: "2026-04-23T14:00:00Z"
+  scope_changes: []
+  alerts: []
+
+risks:
+  - description: "Bubble view representation for multiple lots per ticker (FR-005) deferred to sprint 2 — confirm in REQS."
+    likelihood: low
+    mitigation: "REQs will reference FR-005 TBD; sprint 2 pulls TASK-004."
+
 created: "2026-04-23"
 updated: "2026-04-23"
-status: draft
-workflow:
-  active: ""
-  pending: []
-  completed: []
-  skipped: []
