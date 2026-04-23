@@ -20,3 +20,6 @@ venv/
 # GSE-One (machine-specific)
 .gse/local/
 
+# Cursor / IDE
+.cursor/
+
