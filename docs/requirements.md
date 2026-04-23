@@ -28,7 +28,7 @@ This file is the **working specification** for the product. Update it whenever s
 
 ### FR-003 — Luxembourg six-month rule
 
-- A lot is **tax-free to sell** if it has been held **> 6 months** from its **lot acquisition date** to the **reference date** (default: **today**; confirm in REQS if “as of” date is user-configurable — OQ-003).
+- A lot is **tax-free to sell** if it has been held **> 6 months** from its **lot acquisition date** to the **reference date** (**system date** — `date.today()`; no user-configurable as-of date).
 - Lots **not** past the threshold appear in the **waiting** bucket with **visibility of time until** they become tax-free.
 
 ### FR-004 — View: Tax-free / waiting list
@@ -62,14 +62,14 @@ This file is the **working specification** for the product. Update it whenever s
 ### NFR-005 — Production deployment gate
 
 - After local testing is validated by the user, a **deployment gate** is presented: "Deploy to production? (yes / not now)".
-- If yes, the target is either a **Hetzner VPS** (Docker on Linux) or **AWS** (see NFR-006). The user chooses at gate time.
+- If yes, deployment follows **NFR-006** (v1 default: **Hetzner**). The **`/gse:deploy`** command is used when the project is ready for that step (after a working container and user sign-off).
 - If not now, the app continues to run locally; the gate can be re-triggered at any time.
 
 ### NFR-006 — Production target options
 
-- **Option A — Hetzner VPS:** SSH into the server, `docker pull` / `docker run`. Simplest ops; fixed monthly cost (~€5–20/mo for a CX21/CX31). Suitable if the app is for personal use only.
-- **Option B — AWS:** see "AWS deployment advice" section below for recommended path.
-- Both options use the **same container image** built locally (or via CI); no app code changes are required between local and production.
+- **Chosen for v1 — Hetzner VPS:** Docker on Linux; deployment exercised via **`/gse:deploy`** in this project. Fixed monthly cost (~€5–20/mo for a CX21/CX31). AWS remains documented below as a deferred alternative.
+- **Deferred — AWS:** see "AWS deployment advice" section below if the target changes later.
+- Both paths use the **same container image**; no app code changes are required between local and production.
 
 ### NFR-002 — Privacy
 
@@ -117,3 +117,4 @@ For a **single Python container with no database**, the options ranked by simpli
 | 2026-04-23 | NFR-001 updated: platform is now a single Docker container (Python); accessed via Chrome on the same machine. |
 | 2026-04-23 | NFR-004 added: CSV is ephemeral (in-memory per request, never persisted). |
 | 2026-04-23 | NFR-005/006 added: post-testing production deployment gate; targets are Hetzner VPS or AWS App Runner. |
+| 2026-04-23 | NFR-006: production target for v1 locked to **Hetzner**; `/gse:deploy` at delivery gate; AWS deferred. |

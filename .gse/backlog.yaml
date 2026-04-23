@@ -213,8 +213,8 @@ tasks:
     updated: "2026-04-23"
 
   - id: TASK-007
-    title: "Production deployment — Hetzner VPS or AWS App Runner"
-    description: "After local testing gate is passed by user, deploy the container image to the chosen production target (Hetzner: docker run on VPS; AWS: push to ECR + App Runner service)."
+    title: "Production deployment — Hetzner VPS via /gse:deploy"
+    description: "After local testing gate is passed by user, deploy via /gse:deploy (Hetzner + Coolify per GSE-One). AWS deferred."
     artefact_type: config
     sprint: null
     priority: could
