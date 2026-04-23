@@ -38,14 +38,16 @@ workflow:
     - activity: plan
       completed_at: "2026-04-23T14:00:00Z"
       notes: "Sprint 1 scope approved (autonomous); TASK-004/006/007 remain in pool."
-  active: reqs
+    - activity: reqs
+      completed_at: "2026-04-23T15:00:00Z"
+      notes: "docs/sprints/sprint-01/reqs.md approved (REQ-001..005, REQ-101..103)."
+  active: produce
   pending:
-    - produce
     - deliver
   skipped: []
 
 coherence:
-  last_evaluated: "2026-04-23T14:00:00Z"
+  last_evaluated: "2026-04-23T15:00:00Z"
   scope_changes: []
   alerts: []
 

@@ -4,6 +4,8 @@ This file is the **working specification** for the product. Update it whenever s
 
 **Intent:** [INT-001](./intent.md)
 
+**Sprint 1 REQs (approved):** [reqs.md](./sprints/sprint-01/reqs.md)
+
 ---
 
 ## Functional requirements
@@ -28,7 +30,7 @@ This file is the **working specification** for the product. Update it whenever s
 
 ### FR-003 — Luxembourg six-month rule
 
-- A lot is **tax-free to sell** if it has been held **> 6 months** from its **lot acquisition date** to the **reference date** (**system date** — `date.today()`; no user-configurable as-of date).
+- A lot is **tax-free to sell** if it has been held **> 6 months** (calendar months — see **REQ-003** in [Sprint 1 reqs](./sprints/sprint-01/reqs.md)) from its **lot acquisition date** to the **reference date** (**system date** — `date.today()`; no user-configurable as-of date).
 - Lots **not** past the threshold appear in the **waiting** bucket with **visibility of time until** they become tax-free.
 
 ### FR-004 — View: Tax-free / waiting list
@@ -118,3 +120,4 @@ For a **single Python container with no database**, the options ranked by simpli
 | 2026-04-23 | NFR-004 added: CSV is ephemeral (in-memory per request, never persisted). |
 | 2026-04-23 | NFR-005/006 added: post-testing production deployment gate; targets are Hetzner VPS or AWS App Runner. |
 | 2026-04-23 | NFR-006: production target for v1 locked to **Hetzner**; `/gse:deploy` at delivery gate; AWS deferred. |
+| 2026-04-23 | Sprint 1 `docs/sprints/sprint-01/reqs.md` approved; six-month rule = calendar `relativedelta` (see REQ-003). |
