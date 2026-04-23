@@ -54,6 +54,23 @@ This file is the **working specification** for the product. Update it whenever s
 - The user accesses the app in **Google Chrome** on the **same machine** running the container.
 - No `docker-compose` is required for v1 (single container, no orchestration needed).
 
+### NFR-004 — CSV handling (ephemeral)
+
+- Uploaded CSV files are processed **in-memory per request** and **never persisted** to disk or any storage layer inside the container.
+- No persistent volume is mounted; the container is fully ephemeral — restarting it loses no data because it stores none.
+
+### NFR-005 — Production deployment gate
+
+- After local testing is validated by the user, a **deployment gate** is presented: "Deploy to production? (yes / not now)".
+- If yes, the target is either a **Hetzner VPS** (Docker on Linux) or **AWS** (see NFR-006). The user chooses at gate time.
+- If not now, the app continues to run locally; the gate can be re-triggered at any time.
+
+### NFR-006 — Production target options
+
+- **Option A — Hetzner VPS:** SSH into the server, `docker pull` / `docker run`. Simplest ops; fixed monthly cost (~€5–20/mo for a CX21/CX31). Suitable if the app is for personal use only.
+- **Option B — AWS:** see "AWS deployment advice" section below for recommended path.
+- Both options use the **same container image** built locally (or via CI); no app code changes are required between local and production.
+
 ### NFR-002 — Privacy
 
 - **Buy prices** must **never** be shown in the UI (see FR-001).
@@ -61,6 +78,30 @@ This file is the **working specification** for the product. Update it whenever s
 ### NFR-003 — Documentation
 
 - This **living requirements** file is **maintained** as specs evolve (changelog via git history; optional dated “Changes” section below).
+
+---
+
+## AWS deployment advice
+
+For a **single Python container with no database**, the options ranked by simplicity:
+
+| Option | Effort | Cost | Notes |
+|--------|--------|------|-------|
+| **AWS App Runner** | Lowest | ~$5–15/mo (+ idle) | Point at an ECR image; handles HTTPS, scaling, zero infrastructure. Best fit for this project. |
+| **ECS Fargate** | Low-medium | Similar to App Runner | More control (VPC, IAM, task definitions); overkill for a personal app but standard in teams. |
+| **EC2 + Docker** | Medium | ~$5–15/mo (t3.micro) | Closest to Hetzner; you manage the OS and Docker yourself. Familiar if you already know VPS ops. |
+| **Elastic Beanstalk** | Medium | Similar to EC2 | Older managed platform; Docker support exists but adds abstraction that rarely helps solo projects. |
+
+**Recommendation for this project:** **AWS App Runner** is the easiest path:
+1. Build and push the image to **Amazon ECR** (Elastic Container Registry) — one `docker push`.
+2. Create an **App Runner service** pointing at that ECR image — done in the AWS console or one CLI command.
+3. App Runner handles the HTTPS URL, restarts, and (optional) auto-scaling.
+4. No servers, no SSH, no Nginx config.
+
+**Hetzner vs AWS trade-off:**
+- Hetzner is **cheaper and simpler** if you are comfortable with SSH and Linux. A CX21 (2 vCPU, 4 GB, €4.51/mo) runs Docker fine.
+- AWS App Runner is **zero-ops** but has a per-vCPU/memory pricing model that can surprise you if you forget to pause it.
+- For a **personal portfolio tool** used infrequently, Hetzner is probably the better default; AWS App Runner is a good choice if you want to practice AWS deployments (aligned with your learning goals).
 
 ---
 
@@ -74,3 +115,5 @@ This file is the **working specification** for the product. Update it whenever s
 | 2026-04-23 | OQ-003 resolved: reference date is always system date. |
 | 2026-04-23 | OQ-004 resolved: hover shows Ticker, quantity, lot buy date, days until tax-free — no price data. |
 | 2026-04-23 | NFR-001 updated: platform is now a single Docker container (Python); accessed via Chrome on the same machine. |
+| 2026-04-23 | NFR-004 added: CSV is ephemeral (in-memory per request, never persisted). |
+| 2026-04-23 | NFR-005/006 added: post-testing production deployment gate; targets are Hetzner VPS or AWS App Runner. |
