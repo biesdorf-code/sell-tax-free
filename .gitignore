@@ -17,6 +17,9 @@ __pycache__/
 .venv/
 venv/
 
+# Local private data (portfolio / samples — do not commit)
+transactions.csv
+
 # GSE-One (machine-specific)
 .gse/local/
 
