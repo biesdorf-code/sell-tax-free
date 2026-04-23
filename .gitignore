@@ -23,6 +23,10 @@ transactions.csv
 # GSE-One (machine-specific)
 .gse/local/
 
+# Deploy credentials (never commit)
+.env
+.env.local
+
 # Cursor / IDE
 .cursor/
 
