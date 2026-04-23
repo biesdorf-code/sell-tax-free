@@ -36,8 +36,9 @@ traces:
 ## Reformulated understanding
 
 - You want a **local Python web app** (used in **Chrome** on the same computer) where you **upload a CSV** of trades. The file format matches a **sample** you have in mind; **purchase prices must never be shown** in the interface (privacy).
-- **Aggregation:** rows that share the same **ticker** and the same **calendar day** are **merged into one entry**, even when buys had different prices or sizes.
-- **Tax rule (Luxembourg):** positions are **tax-free to sell** when they have been held **longer than six months** measured from **today**; otherwise they sit in a **waiting** state until that threshold.
+- **Aggregation:** rows that share the same **ticker** and the same **calendar day** are **merged into one lot** (one combined quantity for that day), even when buys had different prices or sizes.
+- **Lots:** a **lot** is defined by **acquisition** after that merge: **each calendar day** (per ticker) is its own lot. The **same ticker** can therefore have **many lots** when there were buys on **different days**. The **>6 months** rule is evaluated **per lot**, from that lot’s **buy date** to the **reference date** (see OQ-003).
+- **Tax rule (Luxembourg):** each lot is **tax-free to sell** when it has been held **longer than six months** from its lot date to the reference date; otherwise that lot is **waiting** until the threshold.
 - **View 1 — Tax-free / waiting:** two clear areas: what is already **tax-free**, and what is **still waiting**, each with a **timeline** of **time until tax-free** where applicable.
 - **View 2 — Bubble timeline:** a **single timeline** with **all tickers** as **bubbles**; **bubble size reflects share count**; **hover** shows details; **click** plays a **confetti** animation.
 - **Specs:** keep a **living requirements** document that evolves with the product (see `docs/requirements.md`).
@@ -64,8 +65,9 @@ Single investor using the app **solo** on their **own machine** (no shared accou
 - **OQ-002** — After **grouping same ticker + same day**, how do we compute **“held since”** for the six-month rule when **multiple days** of buys exist — **earliest open lot per ticker**, **FIFO**, or **display separate lines per acquisition date**?
   - resolves_in: REQS
   - impact: behavioral
-  - status: pending
+  - status: resolved
   - raised_at: INT-001
+  - resolution: "**Buy date defines the lot.** After same-day aggregation, each **(ticker, calendar day)** lot keeps that day as its acquisition date. The same ticker has **separate lots** for different buy days; **six months** is computed **independently per lot** from that date (no single merged “earliest date” across lots). Feedback recorded 2026-04-23.
 
 - **OQ-003** — Should **“today”** always be the **system date**, or should the user pick an **“as of” date** (e.g. for planning)?
   - resolves_in: REQS

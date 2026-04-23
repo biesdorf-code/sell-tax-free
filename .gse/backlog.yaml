@@ -39,7 +39,7 @@ tasks:
 
   - id: TASK-002
     title: "Aggregation and Luxembourg 6-month eligibility engine"
-    description: "Group same ticker + same day; compute tax-free vs waiting from holding period rules (resolve OQ-002/OQ-003 in REQs)."
+    description: "Group same ticker + same day into one lot per day; keep separate lots per buy day; compute tax-free vs waiting per lot from lot date to reference date (OQ-003 still TBD in REQs)."
     artefact_type: code
     sprint: null
     priority: must

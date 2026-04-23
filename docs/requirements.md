@@ -15,12 +15,18 @@ This file is the **working specification** for the product. Update it whenever s
 
 ### FR-002 — Same-day / same-ticker aggregation
 
-- Rows with the **same ticker** and the **same calendar day** are **combined into one entry** for display and logic, even when underlying buys differ in price or quantity.
+- Rows with the **same ticker** and the **same calendar day** are **combined into one lot** (single quantity for that ticker on that day), even when underlying buys differ in price or quantity.
+
+### FR-002a — Lots across days (per-ticker)
+
+- A **lot**’s identity is its **acquisition date** after FR-002: each **(ticker, calendar day)** is one lot.
+- The **same ticker** may have **multiple lots** (one per day on which a buy occurred). Lots **do not** merge across days.
+- **Six-month eligibility** (FR-003) is computed **per lot**, from that lot’s date to the **reference date** — not once per ticker across all lots.
 
 ### FR-003 — Luxembourg six-month rule
 
-- A position is **tax-free to sell** if it has been held **> 6 months** relative to the **reference date** (default: **today**; confirm in REQS if “as of” date is user-configurable).
-- Positions **not** past the threshold appear in the **waiting** bucket with **visibility of time until** they become tax-free.
+- A lot is **tax-free to sell** if it has been held **> 6 months** from its **lot acquisition date** to the **reference date** (default: **today**; confirm in REQS if “as of” date is user-configurable — OQ-003).
+- Lots **not** past the threshold appear in the **waiting** bucket with **visibility of time until** they become tax-free.
 
 ### FR-004 — View: Tax-free / waiting list
 
@@ -29,9 +35,9 @@ This file is the **working specification** for the product. Update it whenever s
 
 ### FR-005 — View: Shared bubble timeline
 
-- **One** timeline showing **all tickers** as **bubbles**.
-- **Bubble area** (or diameter) is **proportional to share count**.
-- **Hover:** show **ticker details** (exact fields TBD in REQS; **no buy price**).
+- **One** timeline showing holdings as **bubbles** (how **multiple lots for one ticker** are represented — e.g. one bubble per lot vs aggregated — **TBD in REQS**).
+- **Bubble area** (or diameter) is **proportional to share count** for the unit each bubble represents.
+- **Hover:** show **details** (exact fields TBD in REQS; **no buy price**).
 - **Click:** trigger a **confetti** animation.
 
 ---
@@ -57,3 +63,4 @@ This file is the **working specification** for the product. Update it whenever s
 | Date       | Summary |
 |------------|---------|
 | 2026-04-23 | Initial capture from intent INT-001. |
+| 2026-04-23 | OQ-002 resolved: lots defined by buy date; same ticker, multiple lots; six months per lot (FR-002a). |
