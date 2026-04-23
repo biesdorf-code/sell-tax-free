@@ -2,6 +2,14 @@
 
 Operational companion to the in-app **Deploy to production?** gate (`/deploy`).
 
+## Troubleshooting: “no available server” (Traefik)
+
+If the browser shows a black page with **`no available server`** (and broken HTTPS), Coolify often did not set Traefik’s **`loadbalancer.server.port`** for your app.
+
+**Fix (Coolify UI):** open the application → **Domains** → set the URL to **`https://<your-host>:8080`** (include **`:8080`** even though users open `https://<your-host>/` without the port). Save and **Redeploy**. See [Coolify: No Available Server](https://coolify.io/docs/troubleshoot/applications/no-available-server).
+
+The **`scripts/learner_coolify_deploy.py`** helper sets this domain form automatically on create and on redeploy.
+
 ## Learner mode (shared Coolify, no `gse-one` CLI)
 
 If you only have `.env` with `COOLIFY_URL`, `COOLIFY_API_TOKEN`, `DEPLOY_DOMAIN`, and `DEPLOY_USER` (from your instructor), run from the repo root:

@@ -5,6 +5,11 @@ WORKDIR /app
 ENV PYTHONUNBUFFERED=1
 ENV FLASK_APP=sell_tax_free.app
 
+# curl: Coolify/Docker health checks often use curl/wget against localhost
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends curl \
+    && rm -rf /var/lib/apt/lists/*
+
 COPY requirements.txt .
 RUN pip install --no-cache-dir "flask>=3.0.0,<4" "python-dateutil>=2.8.0" "gunicorn>=22.0.0"
 

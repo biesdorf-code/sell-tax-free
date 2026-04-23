@@ -98,6 +98,9 @@ def main() -> None:
     project_name = f"gse-{deploy_user}"
     app_slug = f"sell-tax-free-{deploy_user}"
     fqdn = f"{app_slug}.{domain}"
+    # Coolify/Traefik: port in the domain tells Coolify to emit loadbalancer.server.port
+    # (fixes "no available server" on custom HTTPS domains). Browser URL stays https://host/ without :8080.
+    domain_for_coolify = f"https://{fqdn}:8080"
 
     git_repo = os.environ.get("DEPLOY_GIT_REPO", "https://github.com/biesdorf-code/sell-tax-free.git")
     git_branch = os.environ.get("DEPLOY_GIT_BRANCH", "main")
@@ -175,9 +178,16 @@ def main() -> None:
             break
 
     if app_uuid:
-        print(f"Found existing app {app_slug}; triggering redeploy…")
+        print(f"Found existing app {app_slug}; ensuring domain includes :8080 for Traefik, then redeploy…")
+        api_request(
+            base,
+            token,
+            "PATCH",
+            f"/api/v1/applications/{app_uuid}",
+            {"domains": domain_for_coolify, "ports_exposes": "8080"},
+        )
         api_request(base, token, "GET", f"/api/v1/deploy?uuid={app_uuid}&force=true")
-        print(f"Redeploy started. When ready: https://{fqdn}")
+        print(f"Redeploy started. Open: https://{fqdn}")
         return
 
     payload = {
@@ -190,7 +200,7 @@ def main() -> None:
         "build_pack": "dockerfile",
         "ports_exposes": "8080",
         "name": app_slug,
-        "domains": f"https://{fqdn}",
+        "domains": domain_for_coolify,
         "instant_deploy": True,
         "health_check_enabled": True,
         "health_check_path": "/",
@@ -205,6 +215,7 @@ def main() -> None:
     new_uuid = created.get("uuid")
     print(f"Application created (uuid={new_uuid}). Build/deploy should start in Coolify.")
     print(f"Target URL (after DNS + SSL): https://{fqdn}")
+    print(f"(Coolify domain field set to {domain_for_coolify} for correct Traefik routing.)")
     print("Add FLASK_SECRET_KEY under the app in Coolify if sessions should be secure.")
 
 
