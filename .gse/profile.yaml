@@ -1,0 +1,34 @@
+version: 1
+created: "2026-04-23"
+updated: "2026-04-23"
+user:
+  name: "Fernando Biesdorf"
+  git_email: "biesdorf@gmail.com"
+dimensions:
+  it_expertise: beginner
+  scientific_expertise: none
+  abstraction_capability: abstract-first
+  language:
+    chat: en
+    artifacts: en
+    overrides: {}
+  preferred_verbosity: terse
+  domain_background: ""
+  decision_involvement: autonomous
+  project_domain: web
+  team_context: solo
+  learning_goals:
+    - "Security"
+    - "Security architecture"
+    - "Deployments with minimum outage"
+  contextual_tips: true
+  emoji: false
+inferred:
+  it_expertise: false
+  scientific_expertise: false
+  abstraction_capability: false
+  language.chat: false
+  preferred_verbosity: false
+  decision_involvement: false
+  project_domain: false
+  team_context: false

@@ -1,0 +1,13 @@
+version: 1
+created: "2026-04-23"
+updated: "2026-04-23"
+dependency_audit: true
+coach:
+  enabled: true
+  max_advice_per_check: 3
+git:
+  strategy: branch-only
+  worktree_dir: ".worktrees"
+lifecycle:
+  mode: ""
+  stale_sprint_sessions: 3
