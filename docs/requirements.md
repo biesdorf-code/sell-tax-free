@@ -10,8 +10,11 @@ This file is the **working specification** for the product. Update it whenever s
 
 ### FR-001 — CSV import
 
-- The user can **upload a CSV** whose structure matches the **project sample** (see Open Questions in intent until the sample is pinned).
-- **Buy prices** (or any field that reveals cost basis) **must not appear** anywhere in the UI.
+- The user can **upload a CSV** with the column layout from `transactions.csv`:
+  `Action`, `Time`, `ISIN`, `Ticker`, `Name`, `Notes`, `ID`, `No. of shares`, `Price / share`, `Currency (Price / share)`, `Exchange rate`, `Result`, `Currency (Result)`, `Total`, `Currency (Total)`, `Withholding tax`, `Currency (Withholding tax)`, `Transaction fee`, `Currency conversion fee`, `Currency (Currency conversion fee)`, `Currency (Transaction fee)`.
+- **Relevant rows:** only rows where `Action` is `Market buy` are processed as holdings.
+- **Fields used:** `Time` (→ lot date), `Ticker`, `No. of shares`.
+- **Fields excluded from UI (privacy):** `Price / share`, `Total`, `Result`, `Exchange rate`, and all currency/fee columns.
 
 ### FR-002 — Same-day / same-ticker aggregation
 
@@ -37,7 +40,7 @@ This file is the **working specification** for the product. Update it whenever s
 
 - **One** timeline showing holdings as **bubbles** (how **multiple lots for one ticker** are represented — e.g. one bubble per lot vs aggregated — **TBD in REQS**).
 - **Bubble area** (or diameter) is **proportional to share count** for the unit each bubble represents.
-- **Hover:** show **details** (exact fields TBD in REQS; **no buy price**).
+- **Hover:** show **Ticker**, **quantity (No. of shares)**, **lot buy date**, **days until tax-free** (or "Tax-free" if already eligible). No buy price or cost basis.
 - **Click:** trigger a **confetti** animation.
 
 ---
@@ -64,3 +67,6 @@ This file is the **working specification** for the product. Update it whenever s
 |------------|---------|
 | 2026-04-23 | Initial capture from intent INT-001. |
 | 2026-04-23 | OQ-002 resolved: lots defined by buy date; same ticker, multiple lots; six months per lot (FR-002a). |
+| 2026-04-23 | OQ-001 resolved: CSV columns locked from transactions.csv; used fields: Action, Time, Ticker, No. of shares. |
+| 2026-04-23 | OQ-003 resolved: reference date is always system date. |
+| 2026-04-23 | OQ-004 resolved: hover shows Ticker, quantity, lot buy date, days until tax-free — no price data. |
