@@ -12,3 +12,4 @@ activity_history:
     completed_at: "2026-04-23T00:00:00Z"
     sprint: 0
     notes: "initial profile created"
+    task_status_snapshot: []
