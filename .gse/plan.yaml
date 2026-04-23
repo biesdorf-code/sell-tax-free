@@ -2,7 +2,7 @@ version: 1
 id: PLN-001
 sprint: 1
 mode: lightweight
-status: active
+status: completed
 goal: "End-to-end slice: import broker CSV, classify lots for Luxembourg 6-month rule, show tax-free vs waiting list; keep requirements doc aligned."
 
 tasks:
@@ -43,13 +43,16 @@ workflow:
       notes: "docs/sprints/sprint-01/reqs.md approved (REQ-001..005, REQ-101..103)."
     - activity: produce
       completed_at: "2026-04-23T16:00:00Z"
-      notes: "Flask app, engine, templates, pytest; ready for DELIVER / review."
-  active: deliver
+      notes: "Flask app, engine, templates, pytest."
+    - activity: deliver
+      completed_at: "2026-04-23T17:00:00Z"
+      notes: "Merged to main; TCP-001 9/9 pass; plan-summary + release."
+  active: null
   pending: []
   skipped: []
 
 coherence:
-  last_evaluated: "2026-04-23T16:00:00Z"
+  last_evaluated: "2026-04-23T17:00:00Z"
   scope_changes: []
   alerts: []
 

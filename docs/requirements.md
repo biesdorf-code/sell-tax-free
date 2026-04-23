@@ -129,3 +129,4 @@ For a **single Python container with no database**, the options ranked by simpli
 | 2026-04-23 | NFR-006: production target for v1 locked to **Hetzner**; `/gse:deploy` at delivery gate; AWS deferred. |
 | 2026-04-23 | Sprint 1 `docs/sprints/sprint-01/reqs.md` approved; six-month rule = calendar `relativedelta` (see REQ-003). |
 | 2026-04-23 | Sprint 1 PRODUCE: Flask app + engine + tests; see **Sprint 1 implementation (dev)** above. |
+| 2026-04-23 | Sprint 1 DELIVER: merged to `main`; [release notes](./sprints/sprint-01/release.md); TCP-001 9/9. |

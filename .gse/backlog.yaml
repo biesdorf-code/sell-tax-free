@@ -48,15 +48,15 @@ tasks:
       implements: []
       derives_from: [INT-001]
     acceptance_criteria: "Given a valid CSV matching the agreed sample, when the user uploads it, then holdings are loaded and no buy price or cost field appears in the UI."
-    status: done
+    status: delivered
     requires_review: true
-    delivered_at: null
+    delivered_at: "2026-04-23T17:00:00Z"
     completed_at: "2026-04-23T16:00:00Z"
     origin: user
     origin_ref: INT-001
     git:
       branch: gse/sprint-01/feat/csv-import
-      branch_status: active
+      branch_status: merged
       worktree: null
       worktree_status: null
       last_commit: null
@@ -64,11 +64,11 @@ tasks:
     github_issue: null
     test_evidence:
       status: pass
-      campaign_ref: null
-      timestamp: "2026-04-23T16:00:00Z"
+      campaign_ref: docs/sprints/sprint-01/test-reports/TCP-001.md
+      timestamp: "2026-04-23T17:00:00Z"
       pass_rate: 100
       code_coverage: null
-      summary: "pytest tests/test_engine.py (parse, privacy by construction)"
+      summary: "pytest tests/test_engine.py + test_app TST-010 (TCP-001)"
     created: "2026-04-23"
     updated: "2026-04-23"
 
@@ -83,15 +83,15 @@ tasks:
       implements: []
       derives_from: [INT-001]
     acceptance_criteria: "Given aggregated lots, when the reference date is applied, then each lot is classified as tax-free or waiting with a correct eligibility date."
-    status: done
+    status: delivered
     requires_review: true
-    delivered_at: null
+    delivered_at: "2026-04-23T17:00:00Z"
     completed_at: "2026-04-23T16:00:00Z"
     origin: user
     origin_ref: INT-001
     git:
       branch: gse/sprint-01/feat/eligibility-engine
-      branch_status: active
+      branch_status: merged
       worktree: null
       worktree_status: null
       last_commit: null
@@ -99,11 +99,11 @@ tasks:
     github_issue: null
     test_evidence:
       status: pass
-      campaign_ref: null
-      timestamp: "2026-04-23T16:00:00Z"
+      campaign_ref: docs/sprints/sprint-01/test-reports/TCP-001.md
+      timestamp: "2026-04-23T17:00:00Z"
       pass_rate: 100
       code_coverage: null
-      summary: "pytest REQ-002/003 examples in tests/test_engine.py"
+      summary: "pytest REQ-002/003 (TCP-001)"
     created: "2026-04-23"
     updated: "2026-04-23"
 
@@ -118,15 +118,15 @@ tasks:
       implements: []
       derives_from: [INT-001]
     acceptance_criteria: "Given classified holdings, when the user opens this view, then tax-free and waiting groups are shown with timelines and no buy prices."
-    status: done
+    status: delivered
     requires_review: true
-    delivered_at: null
+    delivered_at: "2026-04-23T17:00:00Z"
     completed_at: "2026-04-23T16:00:00Z"
     origin: user
     origin_ref: INT-001
     git:
       branch: gse/sprint-01/feat/tax-waiting-ui
-      branch_status: active
+      branch_status: merged
       worktree: null
       worktree_status: null
       last_commit: null
@@ -134,11 +134,11 @@ tasks:
     github_issue: null
     test_evidence:
       status: pass
-      campaign_ref: null
-      timestamp: "2026-04-23T16:00:00Z"
+      campaign_ref: docs/sprints/sprint-01/test-reports/TCP-001.md
+      timestamp: "2026-04-23T17:00:00Z"
       pass_rate: 100
       code_coverage: null
-      summary: "Manual: templates only expose ticker, qty, dates, status; pytest covers engine"
+      summary: "TST-010 Flask client; no price in HTML (TCP-001)"
     created: "2026-04-23"
     updated: "2026-04-23"
 
@@ -188,15 +188,15 @@ tasks:
       implements: []
       derives_from: [INT-001]
     acceptance_criteria: "Given a merged behavior change, when the sprint closes, then docs/requirements.md reflects it or defers with an open question."
-    status: done
+    status: delivered
     requires_review: false
-    delivered_at: null
+    delivered_at: "2026-04-23T17:00:00Z"
     completed_at: "2026-04-23T16:00:00Z"
     origin: user
     origin_ref: INT-001
     git:
       branch: gse/sprint-01/docs/requirements-sync
-      branch_status: active
+      branch_status: merged
       worktree: null
       worktree_status: null
       last_commit: null
