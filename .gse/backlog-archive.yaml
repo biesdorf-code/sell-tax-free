@@ -1,8 +1,43 @@
 version: 1
-archived_from_sprint: 2
-archived_at: "2026-04-23"
-note: "All tasks were delivered; compacted at S02 compound for a clean S03 backlog."
+archived_from_sprint: 3
+archived_at: "2026-04-24"
+note: "Delivered tasks through S03 compound; TASK-011 appended. Pool remains in backlog.yaml."
 tasks:
+
+  - id: TASK-011
+    title: "Website UI v1 baseline + Leopard/Aqua v2 theme"
+    description: "Git tag website-v1; archive style-v1-baseline.css; Aqua panels, title bars, glossy buttons, pinstripes; REQ-301..304."
+    artefact_type: code
+    sprint: 3
+    priority: must
+    complexity: 2
+    traces:
+      implements: [REQ-301, REQ-302, REQ-303, REQ-304]
+      derives_from: [PLN-003]
+    acceptance_criteria: "pytest green; pages show v2 chrome; v1 recoverable per docs/sprints/sprint-03/ui-v1-restore.md"
+    status: delivered
+    requires_review: false
+    origin: user
+    origin_ref: PLN-003
+    git:
+      branch: main
+      branch_status: merged
+      worktree: null
+      worktree_status: null
+      last_commit: null
+      uncommitted_changes: 0
+    github_issue: null
+    test_evidence:
+      status: pass
+      campaign_ref: null
+      timestamp: "2026-04-24T18:00:00Z"
+      pass_rate: 100
+      code_coverage: null
+      summary: "pytest 15 — tests/test_app.py (incl. REQ-301..304), tests/test_engine.py"
+    created: "2026-04-24"
+    updated: "2026-04-24"
+    delivered_at: "2026-04-24T18:00:00Z"
+    completed_at: "2026-04-24T12:30:00Z"
 
   - id: TASK-006
     title: "Dockerfile — single-container Python app"
