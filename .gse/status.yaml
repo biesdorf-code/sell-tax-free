@@ -1,14 +1,14 @@
 version: 1
 created: "2026-04-23"
-updated: "2026-04-23"
+updated: "2026-04-24"
 gse_version: "unknown"
 current_sprint: 3
 current_phase: "LC03"
 last_activity: "compound"
 last_activity_timestamp: "2026-04-23"
 sessions_without_progress: 0
-session_paused: true
-pause_checkpoint: "checkpoint-2026-04-23-1658.yaml"
+session_paused: false
+pause_checkpoint: ""
 activity_history:
   - activity: plan
     completed_at: "2026-04-23T14:00:00Z"
@@ -151,3 +151,34 @@ activity_history:
     sprint: 2
     notes: "docs/sprints/sprint-02/compound.md; methodology-feedback.md; backlog → archive"
     task_status_snapshot: []
+
+workflow_observations:
+  - axis: audit
+    moment: manual
+    severity_counts:
+      critical: 0
+      high: 0
+      medium: 2
+      low: 0
+    applied: 1
+    deferred: 1
+    report: .gse/audits/audit-2026-04-24T0652.md
+    timestamp: "2026-04-24T06:52:00Z"
+  - axis: coach
+    moment: session
+    note: "Coach enabled in project config; orchestrator applies P9/P14 coaching during activities."
+    timestamp: "2026-04-24T08:31:00Z"
+
+audit_history:
+  - timestamp: "2026-04-24T06:52:00Z"
+    trigger: manual
+    findings_total: 2
+    findings_applied: 1
+    findings_deferred: 1
+    report_ref: .gse/audits/audit-2026-04-24T0652.md
+  - timestamp: "2026-04-24T08:31:00Z"
+    trigger: manual
+    findings_total: 0
+    findings_applied: 0
+    findings_deferred: 0
+    report_ref: null

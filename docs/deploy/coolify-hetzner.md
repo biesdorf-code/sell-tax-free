@@ -20,6 +20,17 @@ python scripts/learner_coolify_deploy.py
 
 This uses the Coolify API to ensure project `gse-<DEPLOY_USER>`, environment `production`, and app `sell-tax-free-<DEPLOY_USER>`, then starts a Dockerfile build from `main`. Add **`FLASK_SECRET_KEY`** in the Coolify UI for that app before relying on sessions in production.
 
+**Post-deploy logs (automatic):** after a deploy is triggered, the script waits for the latest deployment to reach a **finished** or **failed** state (or times out), then prints **build/deploy logs** from Coolify and **runtime logs** from the app container when the platform exposes them. That gives you application-layer output (Gunicorn/Flask stderr, etc.) as soon as the container is up.
+
+| `.env` variable | Default | Meaning |
+|-----------------|--------|---------|
+| `COOLIFY_FETCH_LOGS_AFTER_DEPLOY` | `1` | Set to `0` to skip waiting and log streaming (faster return). |
+| `COOLIFY_DEPLOY_WAIT_SEC` | `900` | Max seconds to wait for the deployment to finish. |
+| `COOLIFY_DEPLOY_POLL_INTERVAL` | `5` | Seconds between status polls. |
+| `COOLIFY_LOG_LINES` | `400` | Lines requested for **runtime** logs (build logs are full deployment record). |
+
+To **only** fetch logs for the current app (no deploy), run: `python scripts/coolify_fetch_logs.py`.
+
 Optional `.env` overrides: `DEPLOY_GIT_REPO`, `DEPLOY_GIT_BRANCH`, `COOLIFY_SERVER_UUID` (if multiple servers).
 
 ## Preconditions

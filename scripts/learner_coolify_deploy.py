@@ -17,6 +17,8 @@ import urllib.error
 import urllib.request
 from pathlib import Path
 
+from coolify_fetch_logs import post_deploy_logs_optional_wait
+
 ROOT = Path(__file__).resolve().parents[1]
 ENV_PATH = ROOT / ".env"
 
@@ -188,6 +190,7 @@ def main() -> None:
         )
         api_request(base, token, "GET", f"/api/v1/deploy?uuid={app_uuid}&force=true")
         print(f"Redeploy started. Open: https://{fqdn}")
+        post_deploy_logs_optional_wait(base, token, app_uuid)
         return
 
     payload = {
@@ -217,6 +220,8 @@ def main() -> None:
     print(f"Target URL (after DNS + SSL): https://{fqdn}")
     print(f"(Coolify domain field set to {domain_for_coolify} for correct Traefik routing.)")
     print("Add FLASK_SECRET_KEY under the app in Coolify if sessions should be secure.")
+    if new_uuid:
+        post_deploy_logs_optional_wait(base, token, str(new_uuid))
 
 
 if __name__ == "__main__":

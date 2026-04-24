@@ -1,6 +1,6 @@
 version: 1
 created: "2026-04-23"
-updated: "2026-04-23"
+updated: "2026-04-24"
 user:
   name: "Fernando Biesdorf"
   git_email: "biesdorf@gmail.com"
@@ -21,6 +21,9 @@ dimensions:
     - "Security"
     - "Security architecture"
     - "Deployments with minimum outage"
+    - "Health checks in container platforms"
+    - "Traefik labels and published ports"
+    - "Minimal attack surface for small web apps"
   learning_notes:
     - sprint: 2
       date: "2026-04-23"
@@ -29,9 +32,9 @@ dimensions:
         - "Coolify health checks need curl or wget inside the image (or disable check)."
         - "Traefik/Coolify may require :8080 in FQDN when the app publishes on 8080."
   competency_map:
-    docker_and_containers: introduced
+    docker_and_containers: practiced
     flask_gunicorn: practiced
-    coolify_traefik_debugging: introduced
+    coolify_traefik_debugging: practiced
   contextual_tips: true
   emoji: false
 inferred:

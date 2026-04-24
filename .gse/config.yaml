@@ -1,6 +1,6 @@
 version: 1
 created: "2026-04-23"
-updated: "2026-04-23"
+updated: "2026-04-24"
 project:
   name: Sell Tax Free
   domain: luxembourg-capital-gains
@@ -14,3 +14,9 @@ git:
 lifecycle:
   mode: lightweight
   stale_sprint_sessions: 3
+
+review:
+  custom_checks:
+    - "Container health: PaaS HTTP checks often run curl or wget inside the image — install one in the Dockerfile or adjust/disable the check (python:*-slim may omit both)."
+    - "Edge routing: If the app listens on a non-default port (e.g. 8080), document whether the public FQDN must include that port for Traefik/Coolify."
+    - "Sprint docs: Unless the plan explicitly accepts docs-light risk, archive review.md, release.md, and plan-summary under docs/sprints/sprint-NN/ before deliver closes."

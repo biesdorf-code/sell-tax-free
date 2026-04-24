@@ -40,3 +40,9 @@ Sources: `docs/sprints/sprint-02/reqs.md`, `.gse/plan.yaml`, `.gse/backlog.yaml`
 
 - **Practiced:** Docker packaging, Gunicorn, environment-based `PORT`, first production path via Coolify, reading deployment logs.
 - **LEARN ideas (optional):** “Health checks in container platforms”, “Traefik labels and published ports”, “Minimal attack surface for small web apps”.
+
+## Integration (2026-04-24)
+
+- **Axe 1:** `review.custom_checks` in `.gse/config.yaml`; technical debt → `TASK-008`–`TASK-010` in `.gse/backlog.yaml` (pool).
+- **Axe 2:** No `.gse/compound-tickets-draft.yaml` (local export only per above; no upstream GitHub routing).
+- **Axe 3:** `docs/learning/deployments-and-containers.md`; `profile.yaml` learning goals + competency map updated.
