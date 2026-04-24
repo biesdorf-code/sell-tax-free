@@ -2,7 +2,7 @@ version: 1
 id: PLN-003
 sprint: 3
 mode: lightweight
-status: active
+status: completed
 goal: "Preserve UI v1 via git tag + archive; ship Leopard/Aqua (2007) inspired interface v2 with no functional regression."
 
 tasks:
@@ -32,12 +32,15 @@ workflow:
     - activity: produce
       completed_at: "2026-04-24T12:30:00Z"
       notes: "Tag website-v1; style-v1-baseline.css; templates + style.css v2; tests pass."
-  active: deliver
+    - activity: deliver
+      completed_at: "2026-04-24T18:00:00Z"
+      notes: "main @ branch-only; docs/sprints/sprint-03/release.md + plan-summary.md; pytest 15."
+  active: completed
   pending: []
   skipped: []
 
 coherence:
-  last_evaluated: "2026-04-24T12:00:00Z"
+  last_evaluated: "2026-04-24T18:00:00Z"
   scope_changes: []
   alerts: []
 

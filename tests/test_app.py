@@ -78,6 +78,49 @@ def test_deploy_yes_shows_coolify_steps(client):
     assert "FLASK_SECRET_KEY" in body
 
 
+def test_req301_v1_baseline_stylesheet_exists():
+    """REQ-301: archived v1 CSS present for rollback comparison."""
+    from pathlib import Path
+
+    root = Path(__file__).resolve().parents[1]
+    p = root / "static" / "style-v1-baseline.css"
+    assert p.is_file()
+    assert "system-ui" in p.read_text(encoding="utf-8")
+
+
+def test_req302_req304_leopard_chrome_on_shell_pages(client):
+    """REQ-302 / REQ-304: Aqua panels + version footnote on upload and deploy."""
+    for path in ("/", "/deploy"):
+        rv = client.get(path)
+        assert rv.status_code == 200
+        html = rv.data.decode("utf-8")
+        assert "theme-leopard" in html
+        assert "page-titlebar" in html
+        assert "aqua-window" in html
+        assert "Interface v2" in html
+        assert "Leopard" in html
+
+
+def test_req302_results_page_after_upload(client):
+    """REQ-302: results use Leopard window chrome."""
+    csv = (
+        "Action,Time,ISIN,Ticker,Name,Notes,ID,No. of shares,Price / share\n"
+        "Market buy,2024-05-24 18:26:04,US8740391003,TSM,X,,y,10,1.0\n"
+    )
+    client.post(
+        "/",
+        data={"csv": (BytesIO(csv.encode()), "t.csv")},
+        content_type="multipart/form-data",
+        follow_redirects=True,
+    )
+    rv = client.get("/results")
+    assert rv.status_code == 200
+    html = rv.data.decode("utf-8")
+    assert "theme-leopard" in html
+    assert "aqua-window" in html
+    assert "bubble-timeline" in html
+
+
 def test_upload_uses_session_not_filesystem(client, tmp_path, monkeypatch):
     """REQ-102: no persisted upload file; session holds lot payload only."""
     csv = (
