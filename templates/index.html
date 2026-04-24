@@ -6,32 +6,23 @@
   <title>Sell Tax Free — Upload</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body class="theme-leopard">
+<body>
   <main class="wrap">
-    <header class="page-titlebar">
-      <h1>Sell Tax Free</h1>
-    </header>
-
-    <p class="lede muted">Upload your broker CSV (same columns as your export). Only <strong>Market buy</strong> rows are used. Buy prices are never shown.</p>
+    <h1>Sell Tax Free</h1>
+    <p class="muted">Upload your broker CSV (same columns as your export). Only <strong>Market buy</strong> rows are used. Buy prices are never shown.</p>
     <p class="muted">Reference date for the six-month rule: <strong>{{ reference.isoformat() }}</strong> (server local date).</p>
 
     {% if error %}
     <p class="error" role="alert">{{ error }}</p>
     {% endif %}
 
-    <section class="aqua-window">
-      <div class="aqua-titlebar">CSV upload</div>
-      <div class="aqua-body">
-        <form method="post" enctype="multipart/form-data">
-          <label for="csv">CSV file</label>
-          <input id="csv" name="csv" type="file" accept=".csv,text/csv" required>
-          <button type="submit">Analyze</button>
-        </form>
-      </div>
-    </section>
+    <form method="post" enctype="multipart/form-data" class="card">
+      <label for="csv">CSV file</label>
+      <input id="csv" name="csv" type="file" accept=".csv,text/csv" required>
+      <button type="submit">Analyze</button>
+    </form>
 
     <p class="muted footer-links"><a href="{{ url_for('deploy') }}">Production deployment</a></p>
-    <p class="version-foot">Interface v2 — inspired by Mac OS X Leopard / Aqua (2007)</p>
   </main>
 </body>
 </html>

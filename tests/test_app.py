@@ -88,21 +88,20 @@ def test_req301_v1_baseline_stylesheet_exists():
     assert "system-ui" in p.read_text(encoding="utf-8")
 
 
-def test_req302_req304_leopard_chrome_on_shell_pages(client):
-    """REQ-302 / REQ-304: Aqua panels + version footnote on upload and deploy."""
-    for path in ("/", "/deploy"):
+def test_shell_pages_v1_neutral_layout(client):
+    """Production UI is neutral v1 (no Leopard/Aqua theme classes)."""
+    checks = [("/", "Sell Tax Free"), ("/deploy", "Production deployment")]
+    for path, expected in checks:
         rv = client.get(path)
         assert rv.status_code == 200
         html = rv.data.decode("utf-8")
-        assert "theme-leopard" in html
-        assert "page-titlebar" in html
-        assert "aqua-window" in html
-        assert "Interface v2" in html
-        assert "Leopard" in html
+        assert "theme-leopard" not in html
+        assert "aqua-window" not in html
+        assert expected in html
 
 
-def test_req302_results_page_after_upload(client):
-    """REQ-302: results use Leopard window chrome."""
+def test_results_page_v1_after_upload(client):
+    """Results page keeps bubble timeline without v2 chrome."""
     csv = (
         "Action,Time,ISIN,Ticker,Name,Notes,ID,No. of shares,Price / share\n"
         "Market buy,2024-05-24 18:26:04,US8740391003,TSM,X,,y,10,1.0\n"
@@ -116,8 +115,7 @@ def test_req302_results_page_after_upload(client):
     rv = client.get("/results")
     assert rv.status_code == 200
     html = rv.data.decode("utf-8")
-    assert "theme-leopard" in html
-    assert "aqua-window" in html
+    assert "theme-leopard" not in html
     assert "bubble-timeline" in html
 
 

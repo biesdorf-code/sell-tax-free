@@ -6,56 +6,47 @@
   <title>Sell Tax Free — Production deployment</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body class="theme-leopard">
+<body>
   <main class="wrap">
-    <header class="page-titlebar">
-      <h1>Production deployment</h1>
-    </header>
-
-    <p class="lede muted">Target: <strong>Hetzner VPS</strong> with <strong>Coolify</strong> (NFR-006). No broker data is stored; set a strong <code>FLASK_SECRET_KEY</code> for real sessions.</p>
+    <h1>Production deployment</h1>
+    <p class="muted">Target: <strong>Hetzner VPS</strong> with <strong>Coolify</strong> (NFR-006). No broker data is stored; set a strong <code>FLASK_SECRET_KEY</code> for real sessions.</p>
 
     <nav class="toolbar">
       <a href="{{ url_for('index') }}">← Home</a>
       {% if session.get('lots') %}<a href="{{ url_for('results') }}">Results</a>{% endif %}
     </nav>
 
-    <section class="aqua-window">
-      <div class="aqua-titlebar"><h2>Deploy to production?</h2></div>
-      <div class="aqua-body deploy-gate">
-        <p class="muted">Use this only after you have tested locally (including the Docker image) and are satisfied. Actual provisioning happens in Coolify on your server — this app does not push credentials to any cloud by itself.</p>
+    <section class="card deploy-gate">
+      <h2>Deploy to production?</h2>
+      <p class="muted">Use this only after you have tested locally (including the Docker image) and are satisfied. Actual provisioning happens in Coolify on your server — this app does not push credentials to any cloud by itself.</p>
 
-        {% if not show_steps %}
-        <form method="post" action="{{ url_for('deploy') }}" class="deploy-choice-row">
-          <button type="submit" name="choice" value="yes" class="btn-primary">Yes — show deployment steps</button>
-          <button type="submit" name="choice" value="not_now" class="btn-secondary">Not now</button>
-        </form>
-        {% else %}
-        <p class="badge ok">Checklist unlocked — follow the steps below. Your Coolify UI may label fields slightly differently; adjust names as needed.</p>
-        <form method="post" action="{{ url_for('deploy') }}" class="deploy-dismiss">
-          <button type="submit" name="choice" value="hide_steps" class="linkish">Hide steps (keep this page)</button>
-        </form>
-        {% endif %}
-      </div>
+      {% if not show_steps %}
+      <form method="post" action="{{ url_for('deploy') }}" class="deploy-choice-row">
+        <button type="submit" name="choice" value="yes" class="btn-primary">Yes — show deployment steps</button>
+        <button type="submit" name="choice" value="not_now" class="btn-secondary">Not now</button>
+      </form>
+      {% else %}
+      <p class="badge ok">Checklist unlocked — follow the steps below. Your Coolify UI may label fields slightly differently; adjust names as needed.</p>
+      <form method="post" action="{{ url_for('deploy') }}" class="deploy-dismiss">
+        <button type="submit" name="choice" value="hide_steps" class="linkish">Hide steps (keep this page)</button>
+      </form>
+      {% endif %}
     </section>
 
     {% if show_steps %}
-    <section class="aqua-window">
-      <div class="aqua-titlebar"><h2>Coolify on Hetzner — outline</h2></div>
-      <div class="aqua-body deploy-steps">
-        <ol class="deploy-list">
-          <li>Create or use a VPS (e.g. Hetzner CX21), install Coolify per <a href="https://coolify.io/docs" rel="noopener noreferrer">Coolify docs</a>.</li>
-          <li>In Coolify, add a <strong>New Resource → Dockerfile</strong> (or Git-based build) pointing at this repository’s <code>main</code> branch and root <code>Dockerfile</code>.</li>
-          <li>Set <strong>Build pack</strong> / context to the repo root; no compose required (NFR-001).</li>
-          <li>Expose port <strong>8080</strong> (or map Coolify’s detected port to the container’s <code>PORT</code> — the image defaults to <code>8080</code>).</li>
-          <li>Add environment variable <code>FLASK_SECRET_KEY</code> with a long random string (generate locally; do not commit it).</li>
-          <li>Deploy, open the HTTPS URL Coolify assigns, upload a test CSV, and confirm lists and bubbles work and <strong>no buy prices</strong> appear.</li>
-        </ol>
-        <p class="muted">Detailed notes for operators: <code>docs/deploy/coolify-hetzner.md</code> in the repository.</p>
-      </div>
+    <section class="card deploy-steps">
+      <h2>Coolify on Hetzner — outline</h2>
+      <ol class="deploy-list">
+        <li>Create or use a VPS (e.g. Hetzner CX21), install Coolify per <a href="https://coolify.io/docs" rel="noopener noreferrer">Coolify docs</a>.</li>
+        <li>In Coolify, add a <strong>New Resource → Dockerfile</strong> (or Git-based build) pointing at this repository’s <code>main</code> branch and root <code>Dockerfile</code>.</li>
+        <li>Set <strong>Build pack</strong> / context to the repo root; no compose required (NFR-001).</li>
+        <li>Expose port <strong>8080</strong> (or map Coolify’s detected port to the container’s <code>PORT</code> — the image defaults to <code>8080</code>).</li>
+        <li>Add environment variable <code>FLASK_SECRET_KEY</code> with a long random string (generate locally; do not commit it).</li>
+        <li>Deploy, open the HTTPS URL Coolify assigns, upload a test CSV, and confirm lists and bubbles work and <strong>no buy prices</strong> appear.</li>
+      </ol>
+      <p class="muted">Detailed notes for operators: <code>docs/deploy/coolify-hetzner.md</code> in the repository.</p>
     </section>
     {% endif %}
-
-    <p class="version-foot">Interface v2 — inspired by Mac OS X Leopard / Aqua (2007)</p>
   </main>
 </body>
 </html>
