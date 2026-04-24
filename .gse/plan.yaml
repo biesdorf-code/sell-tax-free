@@ -1,27 +1,19 @@
 version: 1
-id: PLN-002
-sprint: 2
+id: PLN-003
+sprint: 3
 mode: lightweight
-status: completed
-goal: "Dockerize the app, add bubble timeline (FR-005), then optional Hetzner deploy path after user gate."
+status: active
+goal: "Preserve UI v1 via git tag + archive; ship Leopard/Aqua (2007) inspired interface v2 with no functional regression."
 
 tasks:
-  - id: TASK-006
+  - id: TASK-011
     order: 1
     complexity: 2
-    branch: gse/sprint-02/chore/dockerfile
-  - id: TASK-004
-    order: 2
-    complexity: 3
-    branch: gse/sprint-02/feat/bubble-timeline
-  - id: TASK-007
-    order: 3
-    complexity: 2
-    branch: gse/sprint-02/chore/hetzner-deploy
+    branch: gse/sprint-03/feat/leopard-ui-v2
 
 budget:
-  total: 7
-  consumed: 7
+  total: 2
+  consumed: 2
   remaining: 0
 
 workflow:
@@ -32,30 +24,24 @@ workflow:
     - deliver
   completed:
     - activity: plan
-      completed_at: "2026-04-23T18:00:00Z"
-      notes: "PLN-002: TASK-006 → TASK-004 → TASK-007 (7 pts)."
+      completed_at: "2026-04-24T12:00:00Z"
+      notes: "PLN-003: UI v2 Leopard sprint; single task TASK-011."
     - activity: reqs
-      completed_at: "2026-04-23T20:00:00Z"
-      notes: "docs/sprints/sprint-02/reqs.md — REQ-201 one bubble per lot; REQ-202 Docker."
+      completed_at: "2026-04-24T12:15:00Z"
+      notes: "docs/sprints/sprint-03/reqs.md — REQ-301..304."
     - activity: produce
-      completed_at: "2026-04-23T21:00:00Z"
-      notes: "Bubbles, Dockerfile, /deploy gate, Gunicorn, docs/deploy/coolify-hetzner.md; pytest 12."
-    - activity: deliver
-      completed_at: "2026-04-23T21:30:00Z"
-      notes: "Merged to main; TASK-004/006/007 delivered; integration branch removed."
-  active: completed
+      completed_at: "2026-04-24T12:30:00Z"
+      notes: "Tag website-v1; style-v1-baseline.css; templates + style.css v2; tests pass."
+  active: deliver
   pending: []
   skipped: []
 
 coherence:
-  last_evaluated: "2026-04-23T18:00:00Z"
+  last_evaluated: "2026-04-24T12:00:00Z"
   scope_changes: []
   alerts: []
 
-risks:
-  - description: "FR-005 bubble layout for multiple lots per ticker must be fixed in REQs before coding."
-    likelihood: medium
-    mitigation: "Default: one bubble per lot on shared axis; document in sprint-02 reqs."
+risks: []
 
-created: "2026-04-23"
-updated: "2026-04-23"
+created: "2026-04-24"
+updated: "2026-04-24"

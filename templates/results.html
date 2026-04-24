@@ -6,10 +6,13 @@
   <title>Sell Tax Free — Results</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body>
+<body class="theme-leopard">
   <main class="wrap">
-    <h1>Results</h1>
-    <p class="muted">Reference date: <strong>{{ reference.isoformat() }}</strong>. Luxembourg rule: tax-free when held <strong>more than</strong> six calendar months (REQ-003 in project docs).</p>
+    <header class="page-titlebar">
+      <h1>Results</h1>
+    </header>
+
+    <p class="lede muted">Reference date: <strong>{{ reference.isoformat() }}</strong>. Luxembourg rule: tax-free when held <strong>more than</strong> six calendar months (REQ-003 in project docs).</p>
 
     <nav class="toolbar">
       <a href="{{ url_for('index') }}">← Upload another</a>
@@ -19,61 +22,69 @@
       <a href="{{ url_for('deploy') }}">Production deployment</a>
     </nav>
 
-    <section class="card bubble-card">
-      <h2>Bubble timeline</h2>
-      <p class="muted">One bubble per lot (same ticker on different days = separate bubbles). Bubble size reflects quantity. Hover for details — no prices. Click a bubble for confetti.</p>
-      <div id="bubble-timeline" class="bubble-timeline-root" role="region" aria-label="Lot timeline bubbles"></div>
-      <script type="application/json" id="bubble-lots-data">{{ lots_bubble | tojson }}</script>
-      <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js" defer></script>
-      <script src="{{ url_for('static', filename='bubbles.js') }}" defer></script>
+    <section class="aqua-window">
+      <div class="aqua-titlebar"><h2>Bubble timeline</h2></div>
+      <div class="aqua-body">
+        <p class="muted">One bubble per lot (same ticker on different days = separate bubbles). Bubble size reflects quantity. Hover for details — no prices. Click a bubble for confetti.</p>
+        <div id="bubble-timeline" class="bubble-timeline-root" role="region" aria-label="Lot timeline bubbles"></div>
+        <script type="application/json" id="bubble-lots-data">{{ lots_bubble | tojson }}</script>
+        <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js" defer></script>
+        <script src="{{ url_for('static', filename='bubbles.js') }}" defer></script>
+      </div>
     </section>
 
-    <section class="card">
-      <h2>Tax-free to sell</h2>
-      {% if tax_free %}
-      <table>
-        <thead>
-          <tr><th>Ticker</th><th>Quantity</th><th>Lot buy date</th><th>Status</th></tr>
-        </thead>
-        <tbody>
-          {% for l in tax_free %}
-          <tr>
-            <td>{{ l.ticker }}</td>
-            <td>{{ l.quantity }}</td>
-            <td>{{ l.lot_date.isoformat() }}</td>
-            <td><span class="badge ok">Tax-free</span></td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-      {% else %}
-      <p class="muted">None</p>
-      {% endif %}
+    <section class="aqua-window">
+      <div class="aqua-titlebar"><h2>Tax-free to sell</h2></div>
+      <div class="aqua-body">
+        {% if tax_free %}
+        <table>
+          <thead>
+            <tr><th>Ticker</th><th>Quantity</th><th>Lot buy date</th><th>Status</th></tr>
+          </thead>
+          <tbody>
+            {% for l in tax_free %}
+            <tr>
+              <td>{{ l.ticker }}</td>
+              <td>{{ l.quantity }}</td>
+              <td>{{ l.lot_date.isoformat() }}</td>
+              <td><span class="badge ok">Tax-free</span></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% else %}
+        <p class="muted">None</p>
+        {% endif %}
+      </div>
     </section>
 
-    <section class="card">
-      <h2>Waiting</h2>
-      {% if waiting %}
-      <table>
-        <thead>
-          <tr><th>Ticker</th><th>Quantity</th><th>Lot buy date</th><th>Eligible on</th><th>Days until tax-free</th></tr>
-        </thead>
-        <tbody>
-          {% for l in waiting %}
-          <tr>
-            <td>{{ l.ticker }}</td>
-            <td>{{ l.quantity }}</td>
-            <td>{{ l.lot_date.isoformat() }}</td>
-            <td>{{ l.eligible_on.isoformat() }}</td>
-            <td>{{ l.days_until_tax_free }}</td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-      {% else %}
-      <p class="muted">None</p>
-      {% endif %}
+    <section class="aqua-window">
+      <div class="aqua-titlebar"><h2>Waiting</h2></div>
+      <div class="aqua-body">
+        {% if waiting %}
+        <table>
+          <thead>
+            <tr><th>Ticker</th><th>Quantity</th><th>Lot buy date</th><th>Eligible on</th><th>Days until tax-free</th></tr>
+          </thead>
+          <tbody>
+            {% for l in waiting %}
+            <tr>
+              <td>{{ l.ticker }}</td>
+              <td>{{ l.quantity }}</td>
+              <td>{{ l.lot_date.isoformat() }}</td>
+              <td>{{ l.eligible_on.isoformat() }}</td>
+              <td>{{ l.days_until_tax_free }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% else %}
+        <p class="muted">None</p>
+        {% endif %}
+      </div>
     </section>
+
+    <p class="version-foot">Interface v2 — inspired by Mac OS X Leopard / Aqua (2007)</p>
   </main>
 </body>
 </html>
