@@ -4,7 +4,7 @@ updated: "2026-04-26"
 gse_version: "unknown"
 current_sprint: 4
 current_phase: "LC02"
-last_activity: "plan"
+last_activity: "reqs"
 last_activity_timestamp: "2026-04-26"
 sessions_without_progress: 0
 session_paused: false
@@ -206,6 +206,17 @@ activity_history:
     completed_at: "2026-04-26T06:30:00Z"
     sprint: 4
     notes: "PLN-004 active; S02 debt clearance; TASK-008..010 promoted; workflow.active=reqs"
+    task_status_snapshot:
+      - id: TASK-008
+        status: planned
+      - id: TASK-009
+        status: planned
+      - id: TASK-010
+        status: planned
+  - activity: reqs
+    completed_at: "2026-04-26T06:44:00Z"
+    sprint: 4
+    notes: "docs/sprints/sprint-04/reqs.md — REQ-401..403 approved"
     task_status_snapshot:
       - id: TASK-008
         status: planned
