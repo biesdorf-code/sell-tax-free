@@ -2,7 +2,7 @@ version: 1
 id: PLN-004
 sprint: 4
 mode: lightweight
-status: active
+status: completed
 goal: "Clear S02 housekeeping debt: requirements sync, TCP template for deploy sprints, Coolify logs docs cleanup."
 
 tasks:
@@ -40,7 +40,10 @@ workflow:
     - activity: produce
       completed_at: "2026-04-26T06:46:00Z"
       notes: "TASK-010: requirements.md synced; TASK-008: TCP-S02 created; TASK-009: verified complete."
-  active: deliver
+    - activity: deliver
+      completed_at: "2026-04-26T07:00:00Z"
+      notes: "release.md + plan-summary.md; TCP-S04; pytest 15/15; PLN-004 completed."
+  active: completed
   pending: []
   skipped: []
 
