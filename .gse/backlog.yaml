@@ -13,14 +13,14 @@ tasks:
       implements: []
       derives_from: [S02-compound]
     acceptance_criteria: "Given a sprint that changes deployment or container wiring, when deliver closes, then a TCP markdown file exists with pass summary and scope."
-    status: planned
+    status: done
     sprint: 4
     requires_review: false
     origin: compound
     origin_ref: S02-debt
     git:
       branch: "gse/sprint-04/docs/tcp-deploy"
-      branch_status: planned
+      branch_status: active
       worktree: null
       worktree_status: null
       last_commit: null
@@ -46,14 +46,14 @@ tasks:
       implements: []
       derives_from: [S02-compound]
     acceptance_criteria: "Given an operator using Coolify, when they need deployment logs, then repo docs or a script point to a repeatable API-based fetch path."
-    status: planned
+    status: done
     sprint: 4
     requires_review: false
     origin: compound
     origin_ref: S02-debt
     git:
       branch: "gse/sprint-04/docs/coolify-logs"
-      branch_status: planned
+      branch_status: active
       worktree: null
       worktree_status: null
       last_commit: null
@@ -79,14 +79,14 @@ tasks:
       implements: []
       derives_from: [S02-compound]
     acceptance_criteria: "Given docs/requirements.md, when compared to implemented FR-005 and deploy behavior, then gaps are closed or explicitly deferred with rationale."
-    status: planned
+    status: done
     sprint: 4
     requires_review: false
     origin: compound
     origin_ref: S02-debt
     git:
       branch: "gse/sprint-04/docs/requirements-sync"
-      branch_status: planned
+      branch_status: active
       worktree: null
       worktree_status: null
       last_commit: null

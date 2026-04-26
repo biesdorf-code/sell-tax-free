@@ -8,6 +8,10 @@ This file is the **working specification** for the product. Update it whenever s
 
 **Sprint 2 REQs (approved):** [reqs.md](./sprints/sprint-02/reqs.md)
 
+**Sprint 3 REQs (approved):** [reqs.md](./sprints/sprint-03/reqs.md)
+
+**Sprint 4 REQs (approved):** [reqs.md](./sprints/sprint-04/reqs.md)
+
 ---
 
 ## Functional requirements
@@ -76,10 +80,12 @@ This file is the **working specification** for the product. Update it whenever s
 - If **yes**, the app shows **Coolify / Hetzner** deployment steps and points to **`docs/deploy/coolify-hetzner.md`** for operators. The app does not send credentials to any cloud automatically.
 - If **not now**, the user returns home; the gate remains available via **`/deploy`** anytime.
 - Separately, the **`/gse:deploy`** methodology step is used in the IDE when you are ready to operate Coolify with human confirmation.
+- **Automated deploy script:** `scripts/learner_coolify_deploy.py` uses the Coolify API to create/redeploy the app from `main`. After deploy, it automatically polls for completion and streams build + runtime logs via `scripts/coolify_fetch_logs.py`. See `docs/deploy/coolify-hetzner.md` for env var configuration.
 
 ### NFR-006 — Production target options
 
-- **Chosen for v1 — Hetzner VPS:** Docker on Linux; deployment exercised via **`/gse:deploy`** in this project. Fixed monthly cost (~€5–20/mo for a CX21/CX31). AWS remains documented below as a deferred alternative.
+- **Chosen for v1 — Hetzner VPS with Coolify:** Docker on Linux managed by **Coolify** (self-hosted PaaS). Coolify handles Dockerfile builds from the GitHub repo, Traefik reverse proxy, HTTPS via Let's Encrypt, health checks, and rolling updates. Fixed monthly cost (~€5–20/mo for a CX21/CX31).
+- **Deployment exercised via** `scripts/learner_coolify_deploy.py` (Coolify API) or manually through the Coolify UI. The **`/gse:deploy`** methodology step orchestrates the process with human confirmation.
 - **Deferred — AWS:** see "AWS deployment advice" section below if the target changes later.
 - Both paths use the **same container image**; no app code changes are required between local and production.
 
@@ -136,3 +142,5 @@ For a **single Python container with no database**, the options ranked by simpli
 | 2026-04-23 | FR-005 resolved: one bubble per lot; same calendar day stacks vertically; REQ-201 in Sprint 2 reqs. |
 | 2026-04-23 | Sprint 2 PRODUCE: bubble timeline (`static/bubbles.js`), Dockerfile (NFR-001). |
 | 2026-04-23 | NFR-005: `/deploy` gate; Gunicorn + `PORT` in Docker; `docs/deploy/coolify-hetzner.md` (TASK-007). |
+| 2026-04-24 | Sprint 3: UI v2 Leopard/Aqua theme (TASK-011); later rolled back to v1 neutral UI on user request. |
+| 2026-04-26 | S04 sync (TASK-010): NFR-005 updated with automated deploy script reference; NFR-006 clarified Coolify role; sprint 3+4 REQ links added. |
