@@ -1,7 +1,7 @@
 version: 1
 created: "2026-04-23"
 updated: "2026-04-24"
-note: "Pool after S03 compound: TASK-008..010 (S02 debt). TASK-011 archived."
+note: "S04 sprint: TASK-008..010 promoted. TASK-011 archived."
 tasks:
   - id: TASK-008
     title: "Formal TCP for deployment-path sprints"
@@ -13,13 +13,14 @@ tasks:
       implements: []
       derives_from: [S02-compound]
     acceptance_criteria: "Given a sprint that changes deployment or container wiring, when deliver closes, then a TCP markdown file exists with pass summary and scope."
-    status: open
+    status: planned
+    sprint: 4
     requires_review: false
     origin: compound
     origin_ref: S02-debt
     git:
-      branch: null
-      branch_status: null
+      branch: "gse/sprint-04/docs/tcp-deploy"
+      branch_status: planned
       worktree: null
       worktree_status: null
       last_commit: null
@@ -45,13 +46,14 @@ tasks:
       implements: []
       derives_from: [S02-compound]
     acceptance_criteria: "Given an operator using Coolify, when they need deployment logs, then repo docs or a script point to a repeatable API-based fetch path."
-    status: open
+    status: planned
+    sprint: 4
     requires_review: false
     origin: compound
     origin_ref: S02-debt
     git:
-      branch: null
-      branch_status: null
+      branch: "gse/sprint-04/docs/coolify-logs"
+      branch_status: planned
       worktree: null
       worktree_status: null
       last_commit: null
@@ -77,13 +79,14 @@ tasks:
       implements: []
       derives_from: [S02-compound]
     acceptance_criteria: "Given docs/requirements.md, when compared to implemented FR-005 and deploy behavior, then gaps are closed or explicitly deferred with rationale."
-    status: open
+    status: planned
+    sprint: 4
     requires_review: false
     origin: compound
     origin_ref: S02-debt
     git:
-      branch: null
-      branch_status: null
+      branch: "gse/sprint-04/docs/requirements-sync"
+      branch_status: planned
       worktree: null
       worktree_status: null
       last_commit: null

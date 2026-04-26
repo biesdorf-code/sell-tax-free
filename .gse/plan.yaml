@@ -1,20 +1,28 @@
 version: 1
-id: PLN-003
-sprint: 3
+id: PLN-004
+sprint: 4
 mode: lightweight
-status: completed
-goal: "Preserve UI v1 via git tag + archive; ship Leopard/Aqua (2007) inspired interface v2 with no functional regression."
+status: active
+goal: "Clear S02 housekeeping debt: requirements sync, TCP template for deploy sprints, Coolify logs docs cleanup."
 
 tasks:
-  - id: TASK-011
+  - id: TASK-010
     order: 1
-    complexity: 2
-    branch: gse/sprint-03/feat/leopard-ui-v2
+    complexity: 1
+    branch: gse/sprint-04/docs/requirements-sync
+  - id: TASK-008
+    order: 2
+    complexity: 1
+    branch: gse/sprint-04/docs/tcp-deploy
+  - id: TASK-009
+    order: 3
+    complexity: 1
+    branch: gse/sprint-04/docs/coolify-logs
 
 budget:
-  total: 2
-  consumed: 2
-  remaining: 0
+  total: 3
+  consumed: 0
+  remaining: 3
 
 workflow:
   expected:
@@ -24,27 +32,20 @@ workflow:
     - deliver
   completed:
     - activity: plan
-      completed_at: "2026-04-24T12:00:00Z"
-      notes: "PLN-003: UI v2 Leopard sprint; single task TASK-011."
-    - activity: reqs
-      completed_at: "2026-04-24T12:15:00Z"
-      notes: "docs/sprints/sprint-03/reqs.md — REQ-301..304."
-    - activity: produce
-      completed_at: "2026-04-24T12:30:00Z"
-      notes: "Tag website-v1; style-v1-baseline.css; templates + style.css v2; tests pass."
-    - activity: deliver
-      completed_at: "2026-04-24T18:00:00Z"
-      notes: "main @ branch-only; docs/sprints/sprint-03/release.md + plan-summary.md; pytest 15."
-  active: completed
-  pending: []
+      completed_at: "2026-04-26T06:30:00Z"
+      notes: "PLN-004: S02 debt clearance; TASK-008..010 promoted."
+  active: reqs
+  pending:
+    - produce
+    - deliver
   skipped: []
 
 coherence:
-  last_evaluated: "2026-04-24T18:00:00Z"
+  last_evaluated: "2026-04-26T06:30:00Z"
   scope_changes: []
   alerts: []
 
 risks: []
 
-created: "2026-04-24"
-updated: "2026-04-24"
+created: "2026-04-26"
+updated: "2026-04-26"
