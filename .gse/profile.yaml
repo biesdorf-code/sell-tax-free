@@ -31,10 +31,18 @@ dimensions:
         - "Dockerfile + Gunicorn; honor PORT for PaaS."
         - "Coolify health checks need curl or wget inside the image (or disable check)."
         - "Traefik/Coolify may require :8080 in FQDN when the app publishes on 8080."
+    - sprint: 4
+      date: "2026-04-26"
+      highlights:
+        - "Retroactive TCP: reconstruct test campaign docs from activity notes when a sprint shipped without one."
+        - "Living requirements sync: periodic pass over docs/requirements.md prevents drift from sprint reqs."
+        - "Full GSE lifecycle practiced across 4 sprints (code + docs sprints)."
   competency_map:
     docker_and_containers: practiced
     flask_gunicorn: practiced
     coolify_traefik_debugging: practiced
+    gse_lifecycle: practiced
+    living_documentation: practiced
   contextual_tips: true
   emoji: false
 inferred:

@@ -1,8 +1,32 @@
 version: 1
-archived_from_sprint: 3
-archived_at: "2026-04-24"
-note: "Delivered tasks through S03 compound; TASK-011 appended. Pool remains in backlog.yaml."
+archived_from_sprint: 4
+archived_at: "2026-04-26"
+note: "Delivered tasks through S04 compound. TASK-008..010 appended. Pool empty."
 tasks:
+
+  - id: TASK-008
+    title: "Formal TCP for deployment-path sprints"
+    artefact_type: process
+    sprint: 4
+    complexity: 1
+    status: delivered
+    delivered_at: "2026-04-26T07:00:00Z"
+
+  - id: TASK-009
+    title: "Coolify deployment logs script and docs"
+    artefact_type: docs
+    sprint: 4
+    complexity: 1
+    status: delivered
+    delivered_at: "2026-04-26T07:00:00Z"
+
+  - id: TASK-010
+    title: "Sync docs/requirements.md with FR-005 and deploy NFRs"
+    artefact_type: requirement
+    sprint: 4
+    complexity: 1
+    status: delivered
+    delivered_at: "2026-04-26T07:00:00Z"
 
   - id: TASK-011
     title: "Website UI v1 baseline + Leopard/Aqua v2 theme"
